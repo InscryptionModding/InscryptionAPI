@@ -10,9 +10,27 @@ using EncounterBuilder = DiskCardGame.EncounterBuilder;
 
 namespace InscryptionAPI.Regions;
 
+/// <summary>
+/// Manager class for handling regions.
+/// </summary>
 [HarmonyPatch]
 public static class RegionManager
 {
+    /// <summary>
+    /// All vanilla map regions, reordered to match the general order they're encounter during the story.
+    /// </summary>
+    /// <remarks>
+    /// <list type="table">
+    ///     <listheader>Order of regions in <see cref="BaseGameRegions"/>:</listheader>
+    ///     <item><term>0</term><description>Forest</description></item>
+    ///     <item><term>1</term><description>Wetlands</description></item>
+    ///     <item><term>2</term><description>Alpine</description></item>
+    ///     <item><term>3</term><description>Midnight</description></item>
+    ///     <item><term>4</term><description>Midnight_Ascension</description></item>
+    ///     <item><term>5</term><description>Pirateville</description></item>
+    ///     <item><term>6</term><description>!TEST_PART3</description></item>
+    /// </list>
+    /// </remarks>
     public static readonly ReadOnlyCollection<RegionData> BaseGameRegions = new(ReorderBaseRegions());
 
     /* Order of BaseGameRegions before reordering
@@ -42,8 +60,14 @@ public static class RegionManager
         return data.Select(x => new Part1RegionData(x, 0)).ToList();
     }
 
+    /// <summary>
+    /// All currently processed <see cref="Part1RegionData"/> added by mods.
+    /// </summary>
     public static readonly ObservableCollection<Part1RegionData> NewRegions = new();
-
+    
+    /// <summary>
+    /// A hook for modders to add custom code to modify the regions list dynamically.
+    /// </summary>
     public static event Func<List<RegionData>, List<RegionData>> ModifyRegionsList;
 
     internal static void ReplaceBlueprintInCore(EncounterBlueprintData newData)
@@ -68,6 +92,9 @@ public static class RegionManager
         return retval;
     }
 
+    /// <summary>
+    /// Resynchronizes the regions list.
+    /// </summary>
     public static void SyncRegionList()
     {
         var regions = BaseGameRegions.Concat(NewRegions.Select(x => x.Region)).Select(x => x.CloneRegion()).ToList();
@@ -101,15 +128,35 @@ public static class RegionManager
         };
     }
 
+    /// <summary>
+    /// A copy of the current processed list of all regions in the game, including vanilla and mod-added regions.
+    /// </summary>
     public static List<RegionData> AllRegionsCopy { get; private set; } = BaseGameRegions.ToList();
 
+    /// <summary>
+    /// Adds a new region to the API at the given tier.
+    /// </summary>
+    /// <param name="newRegion">The region to add.</param>
+    /// <param name="tier">The tier of the region.</param>
     public static void Add(RegionData newRegion, int tier)
     {
         if (!NewRegions.Select(x => x.Region).Contains(newRegion))
             NewRegions.Add(new Part1RegionData(newRegion, tier));
     }
+
+    /// <summary>
+    /// Removes a region from the game based on its <see cref="RegionData"/>. Can only remove mod-added regions, not vanilla ones.
+    /// </summary>
+    /// <param name="region">The instance of the region to remove.</param>
     public static void Remove(RegionData region) => NewRegions.Remove(NewRegions.Where(x => x.Region == region).First());
 
+    /// <summary>
+    /// Creates a new region instance.
+    /// </summary>
+    /// <param name="name">The name of the region.</param>
+    /// <param name="tier">The region's tier.</param>
+    /// <param name="addToPool">If the region can appear randomly during a run.</param>
+    /// <returns>The new region instance.</returns>
     public static RegionData New(string name, int tier, bool addToPool = true)
     {
         RegionData retval = ScriptableObject.CreateInstance<RegionData>();
@@ -280,9 +327,9 @@ public static class RegionManager
     }
 
     [HarmonyPatch(typeof(MapDataReader), "SpawnMapObjects", new Type[] { typeof(MapData), typeof(int), typeof(Vector2) })]
-    public class MapDataReader_SpawnMapObjects
+    private class MapDataReader_SpawnMapObjects
     {
-        public static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)
+        private static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)
         {
             // === We want to turn this
 

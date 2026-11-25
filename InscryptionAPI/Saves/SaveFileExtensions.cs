@@ -4,6 +4,9 @@ using UnityEngine.SceneManagement;
 
 namespace InscryptionAPI.Saves;
 
+/// <summary>
+/// Utility class adding extensions to help with <see cref="SaveFile"/> manipulation.
+/// </summary>
 public static class SaveFileExtensions
 {
     /// <summary>

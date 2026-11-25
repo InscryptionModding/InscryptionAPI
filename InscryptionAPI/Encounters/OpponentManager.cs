@@ -12,19 +12,52 @@ using UnityEngine;
 
 namespace InscryptionAPI.Encounters;
 
+/// <summary>
+/// Manager class for adding custom opponents that will appear in-game.
+/// </summary>
 [HarmonyPatch]
 public static class OpponentManager
 {
-    public class FullOpponent
-    {
+    /// <summary>
+    /// A utility class that holds all of the required information about an opponent in order to be able to use it in-game.
+    /// </summary>
+    public class FullOpponent {
+        /// <summary>
+        /// The unique ID for this opponent.
+        /// </summary>
         public readonly Opponent.Type Id;
+        /// <summary>
+        /// The unique ID of the mask Leshy will use when this opponent is fought as a boss.
+        /// </summary>
         public LeshyAnimationController.Mask MaskType = MaskManager.NoMask;
+        /// <summary>
+        /// A subclass of <see cref="DiskCardGame.Opponent"/> that implements the logic for the opponent.
+        /// </summary>
         public Type Opponent;
+        /// <summary>
+        /// The ID of the <see cref="SpecialBattleSequencer"/> subclass the implements additional logic for the opponent's battle.
+        /// </summary>
         public string SpecialSequencerId;
+        /// <summary>
+        /// The frames of the animation used for the opponent's dedicated node (ie, if it's a boss).
+        /// </summary>
         public List<Texture2D> NodeAnimation = new();
 
+        /// <summary>
+        /// Creates a new instance of <see cref="FullOpponent"/> with no node animation.
+        /// </summary>
+        /// <param name="id">The ID of this opponent.</param>
+        /// <param name="opponent">The <see cref="DiskCardGame.Opponent"/> subclass that implements this opponent's primary logic.</param>
+        /// <param name="specialSequencerId">The ID of the <see cref="SpecialBattleSequencer"/> this opponent uses for supplemental battle logic.</param>
         public FullOpponent(Opponent.Type id, Type opponent, string specialSequencerId) : this(id, opponent, specialSequencerId, null) { }
 
+        /// <summary>
+        /// Creates a new instance of <see cref="FullOpponent"/>.
+        /// </summary>
+        /// <param name="id">The ID of this opponent.</param>
+        /// <param name="opponent">The <see cref="DiskCardGame.Opponent"/> subclass that implements this opponent's primary logic.</param>
+        /// <param name="specialSequencerId">The ID of the <see cref="SpecialBattleSequencer"/> this opponent uses for supplemental battle logic.</param>
+        /// <param name="nodeAnimation">The frames of the animation used for the opponent's dedicated node (ie, if it's a boss).</param>
         public FullOpponent(Opponent.Type id, Type opponent, string specialSequencerId, List<Texture2D> nodeAnimation)
         {
             Id = id;
@@ -37,6 +70,9 @@ public static class OpponentManager
         }
     }
 
+    /// <summary>
+    /// All of the vanilla game's opponents.
+    /// </summary>
     public static readonly ReadOnlyCollection<FullOpponent> BaseGameOpponents = new(GenBaseGameOpponents());
     internal static readonly ObservableCollection<FullOpponent> NewOpponents = new();
 
@@ -76,13 +112,35 @@ public static class OpponentManager
         };
     }
 
+    /// <summary>
+    /// The current processed list of all opponents in the game, including vanilla and mod-added opponents.
+    /// </summary>
     public static List<FullOpponent> AllOpponents { get; private set; } = BaseGameOpponents.ToList();
 
+    /// <summary>
+    /// Creates a new opponent and registers it to be able to be fought in-game.
+    /// <br/><br/>
+    /// Does not use node animation textures.
+    /// </summary>
+    /// <param name="guid">The GUID of the mod adding the ability.</param>
+    /// <param name="opponentName">The internal name of the opponent.</param>
+    /// <param name="sequencerID">The ID of the <see cref="SpecialBattleSequencer"/> this opponent uses for supplemental battle logic.</param>
+    /// <param name="opponentType">A subclass of <see cref="Opponent"/> that implements the logic for the opponent.</param>
+    /// <returns>An instance of <see cref="FullOpponent"/> containing all this opponent's data.</returns>
     public static FullOpponent Add(string guid, string opponentName, string sequencerID, Type opponentType)
     {
         return Add(guid, opponentName, sequencerID, opponentType, null);
     }
 
+    /// <summary>
+    /// Creates a new opponent and registers it to be able to be fought in-game.
+    /// </summary>
+    /// <param name="guid">The GUID of the mod adding the ability.</param>
+    /// <param name="opponentName">The internal name of the opponent.</param>
+    /// <param name="sequencerID">The ID of the <see cref="SpecialBattleSequencer"/> this opponent uses for supplemental battle logic.</param>
+    /// <param name="opponentType">A subclass of <see cref="Opponent"/> that implements the logic for the opponent.</param>
+    /// <param name="nodeAnimation">The frames of the animation used for the opponent's dedicated node (ie, if it's a boss).</param>
+    /// <returns>An instance of <see cref="FullOpponent"/> containing all this opponent's data.</returns>
     public static FullOpponent Add(string guid, string opponentName, string sequencerID, Type opponentType, List<Texture2D> nodeAnimation)
     {
         Opponent.Type opponentId = GuidManager.GetEnumValue<Opponent.Type>(guid, opponentName);
@@ -90,6 +148,10 @@ public static class OpponentManager
         NewOpponents.Add(opp);
         return opp;
     }
+
+    /// <summary>
+    /// The list of opponents that will be fought in Act 1 in the current run.
+    /// </summary>
     public static List<Opponent.Type> RunStateOpponents
     {
         get
@@ -159,6 +221,9 @@ public static class OpponentManager
         return false;
     }
 
+    /// <summary>
+    /// Reverse patch containing the original, unmodified code for <see cref="BossBattleSequencer.GetSequencerIdForBoss(Opponent.Type)"/>.
+    /// </summary>
     [HarmonyReversePatch(HarmonyReversePatchType.Original)]
     [HarmonyPatch(typeof(BossBattleSequencer), nameof(BossBattleSequencer.GetSequencerIdForBoss))]
     [MethodImpl(MethodImplOptions.NoInlining)]

@@ -3,8 +3,14 @@ using DiskCardGame;
 namespace InscryptionAPI.Ascension;
 
 // adding this comment to say that setupifier is a ridiculous word, very fun
+/// <summary>
+/// Handles adding the <see cref="AscensionChallengePaginator"/> to the ascension menu object.
+/// </summary>
 public class AscensionChallengePaginatorSetupifier : ManagedBehaviour
 {
+    /// <summary>
+    /// Adds the <see cref="AscensionChallengePaginator"/> to the ascension menu object.
+    /// </summary>
     public void Start()
     {
         AscensionMenuScreenTransition screen = gameObject.GetComponent<AscensionMenuScreenTransition>();

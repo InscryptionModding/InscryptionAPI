@@ -1,5 +1,8 @@
 namespace InscryptionAPI.Saves;
 
+/// <summary>
+/// Class representing modded game data.
+/// </summary>
 public class ModdedSaveData
 {
     internal Dictionary<string, Dictionary<string, object>> SaveData = new();
@@ -25,6 +28,14 @@ public class ModdedSaveData
         return (T)SaveData[guid][key];
     }
 
+    /// <summary>
+    /// Attempts to locate the GUID and relevant string key from a save value in the modded save data.
+    /// </summary>
+    /// <param name="prefix">The prefix appended to the start of the save data's string. Not the GUID.</param>
+    /// <param name="enumValue">The ID of the key to find, converted to a string.</param>
+    /// <param name="guid">The located GUID or null if it couldn't be found.</param>
+    /// <param name="key">The located string kwy or null if it couldn't be found.</param>
+    /// <returns>True if the GUID and key could be found. False otherwise.</returns>
     public bool TryGetGuidAndKey(string prefix, string enumValue, out string guid, out string key)
     {
         foreach (KeyValuePair<string, Dictionary<string, object>> pair in SaveData)

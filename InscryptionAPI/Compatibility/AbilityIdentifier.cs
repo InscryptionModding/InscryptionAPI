@@ -3,6 +3,7 @@ using InscryptionAPI.Guid;
 
 namespace APIPlugin;
 
+#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
 [Obsolete("Use AbilityManager instead", true)]
 public class AbilityIdentifier
 {
@@ -33,3 +34,4 @@ public class AbilityIdentifier
         return $"{guid}({name})";
     }
 }
+#pragma warning restore CS1591 // Missing XML comment for publicly visible type or member

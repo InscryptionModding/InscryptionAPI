@@ -5,6 +5,7 @@ using System.Reflection;
 
 namespace APIPlugin;
 
+#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
 [Obsolete("Unncessary", true)]
 [AttributeUsage(AttributeTargets.Field)]
 public class IgnoreMappingAttribute : Attribute { }
@@ -69,3 +70,4 @@ public static class TypeMapper<S, D> where S : class where D : class {
         return destination;
     }
 }
+#pragma warning restore CS1591 // Missing XML comment for publicly visible type or member

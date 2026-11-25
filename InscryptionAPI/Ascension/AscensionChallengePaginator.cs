@@ -6,11 +6,18 @@ using System.Text;
 using UnityEngine;
 
 namespace InscryptionAPI.Ascension;
+/// <summary>
+/// Class that handles adding displaying custom challenges and allows for multiple pages of challenges.
+/// </summary>
+public class AscensionChallengePaginator : MonoBehaviour {
+    // not sure if this will break any mods but it's not being used or assigned to.
+    //public bool initialized;
 
-public class AscensionChallengePaginator : MonoBehaviour
-{
-    public bool initialized;
-
+    /// <summary>
+    /// Initialises the challenge screen, adding custom challenges and UI elements.
+    /// </summary>
+    /// <param name="screen">The <see cref="AscensionChallengeScreen"/> to attach this paginator to.</param>
+    /// <param name="transition">The default transition object to use.</param>
     public void Initialize(AscensionChallengeScreen screen, AscensionMenuScreenTransition transition = null)
     {
         if (challengeObjectsForPages == null)
@@ -39,6 +46,10 @@ public class AscensionChallengePaginator : MonoBehaviour
 
         this.screen = screen;
     }
+    /// <summary>
+    /// Creates the <see cref="AscensionChallengeInfo"/> for the placeholder challenge.
+    /// This placeholder is used when errors occur when loading challenges.
+    /// </summary>
     public void InitialiseMissingChallengeInfo()
     {
         missingChallengeInfo = ScriptableObject.CreateInstance<AscensionChallengeInfo>();
@@ -51,6 +62,11 @@ public class AscensionChallengePaginator : MonoBehaviour
         missingChallengeInfo.pointValue = 0;
     }
 
+    /// <summary>
+    /// Adds a new page of challenges to the list of pages.
+    /// Pages contain (by default) up to 14 challenge icons. Excess challenges overflow onto new pages.
+    /// </summary>
+    /// <param name="challengeInfos"><see cref="AscensionChallengeInfo"/>s that will be displayed on this page.</param>
     public void AddPage(List<AscensionChallengeInfo> challengeInfos)
     {
         // create the challenge info for missingChallengeInfo challenges
@@ -71,7 +87,13 @@ public class AscensionChallengePaginator : MonoBehaviour
         int numIcons = Mathf.Min(14, challengeObjectsForPages[0].Count) - numBosses;
 
         // the list index when we begin adding boss icons
-        int bossStartingIndex = (1 + regularChallengeInfos.Count) / 2;
+        int bossStartingIndex;
+        if (numBosses == 0) {
+            bossStartingIndex = -1;
+        }
+        else {
+            bossStartingIndex = (1 + regularChallengeInfos.Count) / 2;
+        }
         int numBossesAdded = 0;
 
         // 14 = regular + boss * 2
@@ -165,6 +187,9 @@ public class AscensionChallengePaginator : MonoBehaviour
 
         return newIcon;
     }
+    /// <summary>
+    /// Initialise the challenge screen and pages whenever the challenge screen is enabled.
+    /// </summary>
     public void OnEnable()
     {
         // if there are still active challenges, don't rebuild the pages
@@ -252,17 +277,23 @@ public class AscensionChallengePaginator : MonoBehaviour
         List<List<AscensionChallengeInfo>> pagesToAdd = new();
         while (challengesToAdd.Count > 0)
         {
+            int maxIcons = 14;
             List<(ChallengeManager.FullChallenge, AscensionChallengeInfo)> page = new();
-            for (int i = 0; i < 14; i++) // each page can have 14 icons max
-            {
-                if (challengesToAdd.Count > 0)
-                {
-                    page.Add(challengesToAdd.Last());
-                    if (challengesToAdd.Last().Item1.Boss) // boss icons take up a whole column
-                    {
-                        i++;
+            // each page can have 14 icons max
+            for (int i = 0; i < maxIcons; i++) {
+                if (challengesToAdd.Count > 0) {
+                    (ChallengeManager.FullChallenge, AscensionChallengeInfo) highestValChallenge = challengesToAdd.Last();
+
+
+                    // boss icons take up a whole column
+                    if (highestValChallenge.Item1.Boss) {
+                        maxIcons--;
                     }
-                    challengesToAdd.RemoveAt(challengesToAdd.Count - 1);
+
+                    if (i < maxIcons) {
+                        page.Add(highestValChallenge);
+                        challengesToAdd.Remove(highestValChallenge);
+                    }
                 }
             }
             // re-sort the page so boss challenges have the correct info
@@ -274,7 +305,7 @@ public class AscensionChallengePaginator : MonoBehaviour
                 }
                 else
                 {
-                    return (x.Item1.UnlockLevel + (x2.Item1.Boss ? 0 : 0)) - (x2.Item1.UnlockLevel + (x.Item1.Boss ? 0 : 0));
+                    return (x.Item1.UnlockLevel) - (x2.Item1.UnlockLevel);
                 }
             });
             pagesToAdd.Add(page.ConvertAll(x => x.Item2));
@@ -291,6 +322,13 @@ public class AscensionChallengePaginator : MonoBehaviour
         InstantiateArrowObjects(icons);
     }
 
+    /// <summary>
+    /// Creates the <see cref="leftArrow"/> and <see cref="rightArrow"/> UI elements for the challenge screen.
+    /// Positioning is determined by the positions of the challenge icons.
+    /// By default, the API tries to place the arrows on the left and right sides of the screen.
+    /// If there isn't enough space due to screen resolution (or if the user has toggled the config option), the arrows are placed at the top of the screen instead.
+    /// </summary>
+    /// <param name="icons"></param>
     public void InstantiateArrowObjects(List<AscensionIconInteractable> icons)
     {
         Vector3 topRight = new(float.MinValue, float.MinValue);
@@ -343,6 +381,9 @@ public class AscensionChallengePaginator : MonoBehaviour
         rightArrow.ClearDelegates();
         rightArrow.CursorSelectStarted += (x) => NextPage();
     }
+    /// <summary>
+    /// Loads the next page. Wraps around to the first page if currently on the last page.
+    /// </summary>
     public void NextPage()
     {
         pageIndex++;
@@ -351,6 +392,9 @@ public class AscensionChallengePaginator : MonoBehaviour
 
         LoadPage(pageIndex);
     }
+    /// <summary>
+    /// Loads the previous page. Wraps around to the last page if currently on the first page.
+    /// </summary>
     public void PreviousPage()
     {
         pageIndex--;
@@ -359,7 +403,10 @@ public class AscensionChallengePaginator : MonoBehaviour
 
         LoadPage(pageIndex);
     }
-
+    /// <summary>
+    /// Loads the challenge page at the given index.
+    /// </summary>
+    /// <param name="page">Index of the page to load.</param>
     public void LoadPage(int page)
     {
         // if page index corresponds to an index in challengeObjects
@@ -463,17 +510,41 @@ public class AscensionChallengePaginator : MonoBehaviour
     /// </summary>
     public List<List<GameObject>> challengeObjectsForPages;
 
+    /// <summary>
+    /// The current page index. Determines what challenges are currently displayed.
+    /// </summary>
     public int pageIndex;
+    /// <summary>
+    /// How many icons are displayed on each page.
+    /// </summary>
     public int pageLength;
 
+    /// <summary>
+    /// Object that handles displaying challenges.
+    /// </summary>
     public AscensionChallengeScreen screen;
 
+    /// <summary>
+    /// Object that handles the transition to and from the menu screens.
+    /// </summary>
     public AscensionMenuScreenTransition transition;
 
+    /// <summary>
+    /// The UI interactable for moving to the previous page.
+    /// </summary>
     public AscensionMenuInteractable leftArrow;
+    /// <summary>
+    /// The UI interactable for moving to the next page.
+    /// </summary>
     public AscensionMenuInteractable rightArrow;
 
+    /// <summary>
+    /// <see cref="Sprite"/> for the placeholder challenge that appears in empty slots or when an error occurs.
+    /// </summary>
     public static Sprite missingChallengeSprite;
+    /// <summary>
+    /// <see cref="AscensionChallengeInfo"/> for the placeholder challenge that appears in empty slots or when an error occurs.
+    /// </summary>
     public static AscensionChallengeInfo missingChallengeInfo;
 
     private class NoneChallengeDisplayer : MonoBehaviour

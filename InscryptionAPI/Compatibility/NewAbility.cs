@@ -5,6 +5,7 @@ using static InscryptionAPI.Card.AbilityManager;
 
 namespace APIPlugin;
 
+#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
 [Obsolete("Use AbilityManager instead", true)]
 public class NewAbility
 {
@@ -25,3 +26,4 @@ public class NewAbility
         this.id = AbilityIdentifier.GetID(guid, fab.Info.rulebookName);
     }
 }
+#pragma warning restore CS1591 // Missing XML comment for publicly visible type or member

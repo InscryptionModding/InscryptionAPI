@@ -11,11 +11,16 @@ namespace InscryptionAPI.Encounters;
 /// </remarks>
 public interface ICustomExhaustSequence
 {
-    public bool RespondsToCustomExhaustSequence(CardDrawPiles drawPiles);
+    /// <summary>
+    /// If <see cref="DoCustomExhaustSequence(CardDrawPiles)"/> should be called.
+    /// </summary>
+    /// <param name="drawPiles">The CardDrawPiles instance for this scene.</param>
+    /// <returns>True if this trigger should be run.</returns>
+    bool RespondsToCustomExhaustSequence(CardDrawPiles drawPiles);
     /// <summary>
     /// Executes the sequence that plays when the player exhausts their draw piles.
     /// </summary>
     /// <param name="drawPiles">The CardDrawPiles instance for this scene.</param>
     /// <returns>An enumeration of Unity events.</returns>
-    public IEnumerator DoCustomExhaustSequence(CardDrawPiles drawPiles);
+    IEnumerator DoCustomExhaustSequence(CardDrawPiles drawPiles);
 }

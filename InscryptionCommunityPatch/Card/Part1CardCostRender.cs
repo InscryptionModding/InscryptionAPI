@@ -8,13 +8,29 @@ using UnityEngine;
 namespace InscryptionCommunityPatch.Card;
 
 /// <summary>
-/// Modifies how card costs are rendered in Act to add support for mixed card costs, custom costs, and energy and Mox costs.
+/// Modifies how card costs are rendered in Act 1 in order to add support for mixed card costs, custom costs, and energy and Mox costs.
 /// </summary>
 public static class Part1CardCostRender
 {
+    /// <summary>
+    /// An Action of <see cref="CardInfo"/> to <see cref="List{Texture2D}"/> representing a card cost update.
+    /// </summary>
     public static event Action<CardInfo, List<Texture2D>> UpdateCardCost;
+    /// <summary>
+    /// An Action of <see cref="CardInfo"/> to <see cref="List{Texture2D}"/> representing a playable card cost update.
+    /// </summary>
     public static event Action<PlayableCard, List<Texture2D>> UpdatePlayableCardCost;
 
+    /// <summary>
+    /// This function handles getting the cost texture for the given card from the specified cost amounts that are passed into it.
+    /// </summary>
+    /// <param name="cardInfo">The <see cref="CardInfo"/> representing the Card.</param>
+    /// <param name="playableCard">The <see cref="PlayableCard"/> representing the Playable Version of the Card.</param>
+    /// <param name="bloodCost">The amount of blood by which the card costs.</param>
+    /// <param name="bonesCost">The amount of bones by which the card costs.</param>
+    /// <param name="energyCost">The amount of energy by which the card costs.</param>
+    /// <param name="gemsCost">The Types of Gem's the card costs.</param>
+    /// <returns>A List of <see cref="Texture2D"/> representing the Cost Textures for the card.</returns>
     public static List<Texture2D> CostTextures(CardInfo cardInfo, PlayableCard playableCard, int bloodCost, int bonesCost, int energyCost, List<GemType> gemsCost)
     {
         List<Texture2D> costTextures = new();
@@ -70,6 +86,11 @@ public static class Part1CardCostRender
         return costTextures;
     }
 
+    /// <summary>
+    /// Handles getting the Gem Cost Texture for the <see cref="CardInfo"/>/<see cref="PlayableCard"/>.
+    /// </summary>
+    /// <param name="gemsCost">The <see cref="GemType"/>'s in which the card costs.</param>
+    /// <returns>A List of <see cref="Texture2D"/> representing the Gem Cost Textures of the cost.</returns>
     public static List<Texture2D> GetMoxTextures(List<GemType> gemsCost)
     {
         List<Texture2D> gemCost = new();

@@ -24,7 +24,21 @@ internal class OpponentGemsPatches
     private static void CleanUpOpponentGems() => Singleton<OpponentGemsManager>.Instance?.opponentGems.Clear();
 
     [HarmonyPostfix, HarmonyPatch(typeof(ResourcesManager), nameof(ResourcesManager.ForceGemsUpdate))]
-    private static void ForceOpponentGemsUpdate() => Singleton<OpponentGemsManager>.Instance?.ForceGemsUpdate();
+    private static void ForceOpponentGemsUpdate(ResourcesManager __instance) {
+        foreach (CardSlot slot in Singleton<BoardManager>.Instance.GetSlots(getPlayerSlots: true)) {
+            if (slot.Card != null && !slot.Card.Dead) {
+                GainMultipleGems[] components2 = slot.Card.GetComponents<GainMultipleGems>();
+                foreach (GainMultipleGems gainGems in components2) {
+                    __instance.gems.AddRange(gainGems.Gems);
+                }
+            }
+        }
+        for (int j = 0; j < 3; j++) {
+            __instance.SetGemOnImmediate((GemType)j, __instance.gems.Contains((GemType)j));
+        }
+
+        Singleton<OpponentGemsManager>.Instance?.ForceGemsUpdate();
+    }
 
     [HarmonyPostfix]
     [HarmonyPatch(typeof(FishHookGrab), nameof(FishHookGrab.PullHook))]
@@ -39,30 +53,34 @@ internal class OpponentGemsPatches
     private static IEnumerator GainGemsForOpponents(IEnumerator enumerator, GainGem __instance)
     {
         yield return enumerator;
-        if (__instance.Card.OpponentCard && Singleton<OpponentGemsManager>.Instance != null)
-            Singleton<OpponentGemsManager>.Instance.AddGem(__instance.Gem);
+        if (__instance != null && __instance.Card != null)
+            if (__instance.Card.OpponentCard && Singleton<OpponentGemsManager>.Instance != null)
+                Singleton<OpponentGemsManager>.Instance.AddGem(__instance.Gem);
     }
     [HarmonyPostfix, HarmonyPatch(typeof(GainGem), nameof(GainGem.OnDie))]
     private static IEnumerator LoseGemsForOpponents(IEnumerator enumerator, GainGem __instance)
     {
         yield return enumerator;
-        if (__instance.Card.OpponentCard && Singleton<OpponentGemsManager>.Instance != null)
-            Singleton<OpponentGemsManager>.Instance.LoseGem(__instance.Gem);
+        if (__instance != null && __instance.Card != null)
+            if (__instance.Card.OpponentCard && Singleton<OpponentGemsManager>.Instance != null)
+                Singleton<OpponentGemsManager>.Instance.LoseGem(__instance.Gem);
     }
 
     [HarmonyPostfix, HarmonyPatch(typeof(GainGemTriple), nameof(GainGemTriple.OnResolveOnBoard))]
     private static IEnumerator GainTripleGemsForOpponents(IEnumerator enumerator, GainGemTriple __instance)
     {
         yield return enumerator;
-        if (__instance.Card.OpponentCard && Singleton<OpponentGemsManager>.Instance)
-            Singleton<OpponentGemsManager>.Instance.AddGems(GemType.Green, GemType.Orange, GemType.Blue);
+        if (__instance != null && __instance.Card != null)
+            if (__instance.Card.OpponentCard && Singleton<OpponentGemsManager>.Instance)
+                Singleton<OpponentGemsManager>.Instance.AddGems(GemType.Green, GemType.Orange, GemType.Blue);
     }
     [HarmonyPostfix, HarmonyPatch(typeof(GainGemTriple), nameof(GainGemTriple.OnDie))]
     private static IEnumerator LoseTripleGemsForOpponents(IEnumerator enumerator, GainGemTriple __instance)
     {
         yield return enumerator;
-        if (__instance.Card.OpponentCard && Singleton<OpponentGemsManager>.Instance != null)
-            Singleton<OpponentGemsManager>.Instance.LoseGems(GemType.Green, GemType.Orange, GemType.Blue);
+        if (__instance != null && __instance.Card != null)
+            if (__instance.Card.OpponentCard && Singleton<OpponentGemsManager>.Instance != null)
+                Singleton<OpponentGemsManager>.Instance.LoseGems(GemType.Green, GemType.Orange, GemType.Blue);
     }
 
     [HarmonyTranspiler, HarmonyPatch(typeof(DiskRenderStatsLayer), nameof(DiskRenderStatsLayer.RenderCard))]

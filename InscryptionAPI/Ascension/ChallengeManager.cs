@@ -288,6 +288,12 @@ public static class ChallengeManager
             CustomUnlockCheck = check;
             return this;
         }
+        /// <summary>
+        /// Marks this challenge as using the boss icon appearance in the select screen.
+        /// This means occupying an entire column.
+        /// </summary>
+        /// <param name="boss">Whether or not this challenge's icon should occupy an entire column of its page.</param>
+        /// <returns>The same <see cref="FullChallenge"/> so a chain can continue.</returns>
         public FullChallenge SetBoss(bool boss)
         {
             Boss = boss;
@@ -295,12 +301,12 @@ public static class ChallengeManager
         }
     }
     /// <summary>
-    /// The list of all base game challenges in the form of ChallengeManager.FullChallenge.
+    /// The list of all base game challenges in the form of <see cref="FullChallenge"/>.
     /// </summary>
     public static readonly ReadOnlyCollection<FullChallenge> BaseGameChallenges = new(GenBaseGameChallenges());
     internal static readonly ObservableCollection<FullChallenge> NewInfos = new();
     /// <summary>
-    /// The list of all new challenges added with the API in the form of ChallengeManager.FullChallenge.
+    /// The list of all new challenges added with the API in the form of <see cref="FullChallenge"/>.
     /// </summary>
     public static readonly ReadOnlyCollection<FullChallenge> NewChallenges = new(NewInfos);
 
@@ -349,7 +355,9 @@ public static class ChallengeManager
         return screen.icons?.FindAll(x => x != null && x.challengeInfo != null && x.challengeInfo.challengeType != AscensionChallenge.None && x.challengeInfo.GetFullChallenge() != null)?
             .ConvertAll(x => x.challengeInfo.challengeType.GetFullChallenge())?.ToArray() ?? new FullChallenge[0];
     }
-
+    /// <summary>
+    /// A hook for modders to add custom code to modify the challenge list dynamically.
+    /// </summary>
     public static event Func<List<FullChallenge>, List<FullChallenge>> ModifyChallenges;
 
     private static AscensionChallengeInfo CloneChallengeInfo(AscensionChallengeInfo info)
@@ -366,7 +374,9 @@ public static class ChallengeManager
         };
         return retval;
     }
-
+    /// <summary>
+    /// Resynchronizes the challenge list.
+    /// </summary>
     public static void SyncChallengeList()
     {
         List<FullChallenge> asci = new(NewInfos);

@@ -6,9 +6,19 @@ using UnityEngine;
 
 namespace InscryptionCommunityPatch.Sequencers;
 
+/// <summary>
+/// This patch fixes Tradable Talking Card related Issues.
+/// </summary>
 [HarmonyPatch]
 public class TradeableTalkingCardFix
 {
+    /// <summary>
+    /// Patches the <see cref="TradeCardsForPelts.OnTradableSelected"/> to allow for better handling regarding the Trade of Talking Cards.
+    /// </summary>
+    /// <param name="__instance">The Class Instance associated with the function e.g. <see cref="TradeCardsForPelts"/>.</param>
+    /// <param name="slot">The slot the card was found in.</param>
+    /// <param name="card">The card being traded for.</param>
+    /// <returns>This only returns our patched variant if the card is a talking card, otherwise it uses vanilla handling.</returns>
     [HarmonyPrefix, HarmonyPatch(typeof(TradeCardsForPelts), nameof(TradeCardsForPelts.OnTradableSelected))]
     private static bool OnTalkingCardSelected(TradeCardsForPelts __instance, HighlightedInteractable slot, PlayableCard card)
     {
@@ -42,6 +52,11 @@ public class TradeableTalkingCardFix
         return false;
     }
 
+    /// <summary>
+    /// Handles the View associated with a trade specific to Talking Cards.
+    /// </summary>
+    /// <param name="card">The card in which is being given to the player.</param>
+    /// <returns>The card added to hand, then a switch back to the trading pool.</returns>
     public static IEnumerator TradeForTalkingCard(PlayableCard card)
     {
         yield return Singleton<PlayerHand>.Instance.AddCardToHand(CardSpawner.SpawnPlayableCard(card.Info), new Vector3(0f, 0.5f, -3f), 0f);
