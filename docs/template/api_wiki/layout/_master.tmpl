@@ -115,6 +115,16 @@
 
         const availableFonts = [
             'dpcomic',
+            '04b',
+            'crumbled-pixels',
+            'daggersquare',
+            'daggersquare-oblique',
+            'garbageschrift',
+            'heavyweight',
+            'mail-ray-stuff',
+            'marksman',
+            'pony-island',
+            'portmanteau',
             'comic-sans',
             'sans-serif',
             'monospace',
@@ -253,6 +263,16 @@
 
                                         <select id="document-font-selector" class="form-select">
                                             <option value="dpcomic">DPComic</option>
+                                            <option value="04b">04b</option>
+                                            <option value="crumbled-pixels">Crumbled Pixels</option>
+                                            <option value="daggersquare">Daggersquare</option>
+                                            <option value="daggersquare-oblique">Daggersquare Oblique</option>
+                                            <option value="garbageschrift">Garbageschrift</option>
+                                            <option value="heavyweight">Heavyweight</option>
+                                            <option value="mail-ray-stuff">Mail Ray Stuff</option>
+                                            <option value="marksman">Marksman</option>
+                                            <option value="pony-island">Pony Island</option>
+                                            <option value="portmanteau">Portmanteau</option>
                                             <option value="comic-sans">Comic Sans (Dyslexia)</option>
                                             <option value="sans-serif">Sans Serif</option>
                                             <option value="monospace">Monospace</option>
@@ -277,6 +297,16 @@
 
                                         <select id="code-font-selector" class="form-select">
                                             <option value="dpcomic">DPComic</option>
+                                            <option value="04b">04b</option>
+                                            <option value="crumbled-pixels">Crumbled Pixels</option>
+                                            <option value="daggersquare">Daggersquare</option>
+                                            <option value="daggersquare-oblique">Daggersquare Oblique</option>
+                                            <option value="garbageschrift">Garbageschrift</option>
+                                            <option value="heavyweight">Heavyweight</option>
+                                            <option value="mail-ray-stuff">Mail Ray Stuff</option>
+                                            <option value="marksman">Marksman</option>
+                                            <option value="pony-island">Pony Island</option>
+                                            <option value="portmanteau">Portmanteau</option>
                                             <option value="comic-sans">Comic Sans (Dyslexia)</option>
                                             <option value="sans-serif">Sans Serif</option>
                                             <option value="monospace">Monospace</option>
@@ -316,23 +346,6 @@
                                     </div>
 
                                     <div class="mb-3">
-                                        <label for="code-font-size" class="form-label">
-                                            Code Font Size
-                                            <output id="code-font-size-value">18px</output>
-                                        </label>
-
-                                        <input
-                                            id="code-font-size"
-                                            class="form-range"
-                                            type="range"
-                                            min="10"
-                                            max="28"
-                                            step="1"
-                                            value="18"
-                                        >
-                                    </div>
-
-                                    <div class="mb-3">
                                         <label for="document-line-height" class="form-label">
                                             Document Line Height
                                             <output id="document-line-height-value">1.5</output>
@@ -346,6 +359,55 @@
                                             max="2.5"
                                             step="0.1"
                                             value="1.5"
+                                        >
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <label for="document-letter-spacing" class="form-label">
+                                            Document Letter Spacing
+                                            <output id="document-letter-spacing-value">0px</output>
+                                        </label>
+                                        <input
+                                            type="range"
+                                            id="document-letter-spacing"
+                                            class="form-range"
+                                            min="-5"
+                                            max="10"
+                                            step="0.1"
+                                            value="0"
+                                        >
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <label for="document-word-spacing" class="form-label">
+                                            Document Word Spacing
+                                            <output id="document-word-spacing-value">0px</output>
+                                        </label>
+                                        <input
+                                            type="range"
+                                            id="document-word-spacing"
+                                            class="form-range"
+                                            min="-5"
+                                            max="20"
+                                            step="0.1"
+                                            value="0"
+                                        >
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <label for="code-font-size" class="form-label">
+                                            Code Font Size
+                                            <output id="code-font-size-value">18px</output>
+                                        </label>
+
+                                        <input
+                                            id="code-font-size"
+                                            class="form-range"
+                                            type="range"
+                                            min="10"
+                                            max="28"
+                                            step="1"
+                                            value="18"
                                         >
                                     </div>
 
@@ -363,6 +425,38 @@
                                             max="2.5"
                                             step="0.1"
                                             value="1.4"
+                                        >
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <label for="code-letter-spacing" class="form-label">
+                                            Code Letter Spacing
+                                            <output id="code-letter-spacing-value">0px</output>
+                                        </label>
+                                        <input
+                                            type="range"
+                                            id="code-letter-spacing"
+                                            class="form-range"
+                                            min="-5"
+                                            max="10"
+                                            step="0.1"
+                                            value="0"
+                                        >
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <label for="code-word-spacing" class="form-label">
+                                            Code Word Spacing
+                                            <output id="code-word-spacing-value">0px</output>
+                                        </label>
+                                        <input
+                                            type="range"
+                                            id="code-word-spacing"
+                                            class="form-range"
+                                            min="-5"
+                                            max="20"
+                                            step="0.1"
+                                            value="0"
                                         >
                                     </div>
 
@@ -384,6 +478,40 @@
                                             max="2"
                                             step="0.1"
                                             value="1.2"
+                                        >
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <label for="heading-letter-spacing" class="form-label">
+                                            Heading Letter Spacing
+                                            <output id="heading-letter-spacing-value">0px</output>
+                                        </label>
+
+                                        <input
+                                            id="heading-letter-spacing"
+                                            class="form-range"
+                                            type="range"
+                                            min="-5"
+                                            max="20"
+                                            step="0.1"
+                                            value="0"
+                                        >
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <label for="heading-word-spacing" class="form-label">
+                                            Heading Word Spacing
+                                            <output id="heading-word-spacing-value">0px</output>
+                                        </label>
+
+                                        <input
+                                            id="heading-word-spacing"
+                                            class="form-range"
+                                            type="range"
+                                            min="-5"
+                                            max="20"
+                                            step="0.1"
+                                            value="0"
                                         >
                                     </div>
                                 </div>
@@ -590,16 +718,6 @@
                     max: 32
                 },
                 {
-                    id: 'code-font-size',
-                    output: 'code-font-size-value',
-                    storage: 'docfx-code-font-size',
-                    property: '--code-font-size',
-                    unit: 'px',
-                    defaultValue: 18,
-                    min: 10,
-                    max: 28
-                },
-                {
                     id: 'document-line-height',
                     output: 'document-line-height-value',
                     storage: 'docfx-document-line-height',
@@ -608,6 +726,36 @@
                     defaultValue: 1.5,
                     min: 1,
                     max: 2.5
+                },
+                {
+                    id: 'document-letter-spacing',
+                    output: 'document-letter-spacing-value',
+                    storage: 'docfx-document-letter-spacing',
+                    property: '--document-letter-spacing',
+                    unit: 'px',
+                    defaultValue: 0,
+                    min: -5,
+                    max: 10
+                },
+                {
+                    id: 'document-word-spacing',
+                    output: 'document-word-spacing-value',
+                    storage: 'docfx-document-word-spacing',
+                    property: '--document-word-spacing',
+                    unit: 'px',
+                    defaultValue: 0,
+                    min: -5,
+                    max: 20
+                },
+                {
+                    id: 'code-font-size',
+                    output: 'code-font-size-value',
+                    storage: 'docfx-code-font-size',
+                    property: '--code-font-size',
+                    unit: 'px',
+                    defaultValue: 18,
+                    min: 10,
+                    max: 28
                 },
                 {
                     id: 'code-line-height',
@@ -620,6 +768,26 @@
                     max: 2.5
                 },
                 {
+                    id: 'code-letter-spacing',
+                    output: 'code-letter-spacing-value',
+                    storage: 'docfx-code-letter-spacing',
+                    property: '--code-letter-spacing',
+                    unit: 'px',
+                    defaultValue: 0,
+                    min: -5,
+                    max: 10
+                },
+                {
+                    id: 'code-word-spacing',
+                    output: 'code-word-spacing-value',
+                    storage: 'docfx-code-word-spacing',
+                    property: '--code-word-spacing',
+                    unit: 'px',
+                    defaultValue: 0,
+                    min: -5,
+                    max: 20
+                },
+                {
                     id: 'heading-line-height',
                     output: 'heading-line-height-value',
                     storage: 'docfx-heading-line-height',
@@ -628,6 +796,26 @@
                     defaultValue: 1.2,
                     min: 1,
                     max: 2
+                },
+                {
+                    id: 'heading-letter-spacing',
+                    output: 'heading-letter-spacing-value',
+                    storage: 'docfx-heading-letter-spacing',
+                    property: '--heading-letter-spacing',
+                    unit: 'px',
+                    defaultValue: 0,
+                    min: -5,
+                    max: 10
+                },
+                {
+                    id: 'heading-word-spacing',
+                    output: 'heading-word-spacing-value',
+                    storage: 'docfx-heading-word-spacing',
+                    property: '--heading-word-spacing',
+                    unit: 'px',
+                    defaultValue: 0,
+                    min: -5,
+                    max: 20
                 }
             ];
 
@@ -741,7 +929,13 @@
                     'docfx-code-font-size',
                     'docfx-document-line-height',
                     'docfx-code-line-height',
-                    'docfx-heading-line-height'
+                    'docfx-document-letter-spacing',
+                    'docfx-document-word-spacing',
+                    'docfx-code-letter-spacing',
+                    'docfx-code-word-spacing',
+                    'docfx-heading-line-height',
+                    'docfx-heading-letter-spacing',
+                    'docfx-heading-word-spacing'
                 ];
     
                 keys.forEach(key => localStorage.removeItem(key));

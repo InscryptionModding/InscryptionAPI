@@ -58,7 +58,7 @@
                 "files": ["community/**.yml", "community/index.md"]
             },
             {
-                "files": ["wiki/toc.yml", "wiki/**.md"]
+                "files": ["wiki/toc.yml", "wiki/**.md", "wiki/**.yml"]
             },
             {
                 "files": ["toc.yml", "index.md"]

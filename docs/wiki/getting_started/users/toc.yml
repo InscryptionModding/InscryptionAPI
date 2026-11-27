@@ -1,0 +1,11 @@
+items:
+- name: Installing With a Mod Manager
+  href: installing_with_a_mod_manager.md
+- name: Installing Manually on Windows (x86)
+  href: installing_manually_on_windows_x86.md
+- name: Installing Manually on Windows (x64)
+  href: installing_manually_on_windows_x64.md
+- name: Installing on The Steam Deck
+  href: installing_on_the_steam_deck.md
+- name: Installing on Mac & Linux
+  href: installing_on_mac_and_linux.md

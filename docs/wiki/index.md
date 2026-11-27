@@ -1,12 +1,22 @@
-## Inscryption Modding Wiki
----
-Welcome to the modding wiki!  This document will help familiarise you with modding Inscryption using the Inscryption API.
-Here you will find in-depth information on the API's numerous features, both what they do and how you can use them.
+# Inscryption Modding Wiki
 
-For a full list of API classes and members, or are looking for more technical information, you can look at the documentation section.
+Hey there, and welcome to the Inscryption Modding and API Wiki. This is your one stop hub for all things related to the API. The following are some quick links:
+
+* [Inscryption API Documentation](../api/index.md)
+* [Inscryption Community Patch Documentation](../community/index.md)
+* [Inscryption Modding Wiki](../wiki/index.md)
+
+Some other links you may find extremely valuable are as follows:
+* [Inscryption Modding Discord](https://discord.gg/QrJEF5Denm)
+* [Thunderstore Package](https://thunderstore.io/c/inscryption/p/API_dev/API/)
+* [GitHub Repository](https://github.com/InscryptionModding/InscryptionAPI)
+
+How can you contribute to the wiki? Well for starters you can find the Wiki end of our setup [here](https://github.com/InscryptionModding/InscryptionAPI/tree/main/docs), the only relevant part of this setup you may need to interact with is `wiki` or any `index.md` files. The rest of it leave untouched unless you ***know*** what you are doing. Once you have a markdown file open its straight forward editing as long as you know how Markdown works.
+
+___
 
 ## Game Tweaks
----
+
 Included with the API are a number of game changes for aiding with multi-Act support and further modding customisation.
 
 The API package also comes with a second DLL consisting of multiple community patches, either fixing bugs or providing QoL changes for the game.
@@ -47,8 +57,10 @@ If the bones TV screen is active, a bolt will also be dropped on top of each car
 ### DeathShield Ability Behaviour
 The API changes how DeathShield (aka Nano Armour/Armoured) functions, with the ability now being attached to a custom ability behaviour  'APIDeathShield' that inherits from DamageShieldBehaviour (more info further below).
 
+___
+
 ## Extra Alternate Portraits
----
+
 In Inscryption, there are some situations where a card's portrait is changed.
 SteelTrap, for example, changes the base card's portrait to the 'closed trap' portrait, and Mud Turtle switches its portrait upon losing its shield.
 However, these cases are very limited; SteelTrap changes *all* cards to the closed trap portrait, even if it's not on the vanilla trap card;
@@ -57,12 +69,14 @@ and only Mud Turtle can change its portrait upon losing its shield.
 So the API changes this. Each added CardInfo can now be assigned custom sprites specific to the effects of SteelTrap and losing a shield, using SetSteelTrapPortrait() and SetBrokenShieldPortrait() respectively.
 These are stored separately from a card's base portrait and alternate portrait, giving you greater freedom in what cards you can make.
 
-|Name                       |Description                                                                            |Setter Methods             |
-|---------------------------|---------------------------------------------------------------------------------------|---------------------------|
-|PixelAlternatePortrait     |The portrait used when calling SwitchToAlternatePortrait in Act 2.                     |SetPixelAlternatePortrait  |
-|SteelTrapPortrait          |The portrait used when the Steel Trap sigil activates.                                 |SetSteelTrapPortrait, SetEmissiveSteelTrapPortrait, SetPixelSteelTrapPortrait  |
-|BrokenShieldPortrait       |The portrait used when this card has lost all of its shields.                          |SetBrokenShieldPortrait, SetEmissiveBrokenShieldPortrait, SetPixelBrokenShieldPortrait |
-|SacrificablePortrait       |The portrait used when this card is on the board and the player is choosing sacrifices.|SetSacrificablePortrait, SetEmissiveSacrificablePortrait, SetPixelSacrificablePortrait |
+| Name                   | Description                                                                             | Setter Methods                                                                         |
+| ---------------------- | --------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
+| PixelAlternatePortrait | The portrait used when calling SwitchToAlternatePortrait in Act 2.                      | SetPixelAlternatePortrait                                                              |
+| SteelTrapPortrait      | The portrait used when the Steel Trap sigil activates.                                  | SetSteelTrapPortrait, SetEmissiveSteelTrapPortrait, SetPixelSteelTrapPortrait          |
+| BrokenShieldPortrait   | The portrait used when this card has lost all of its shields.                           | SetBrokenShieldPortrait, SetEmissiveBrokenShieldPortrait, SetPixelBrokenShieldPortrait |
+| SacrificablePortrait   | The portrait used when this card is on the board and the player is choosing sacrifices. | SetSacrificablePortrait, SetEmissiveSacrificablePortrait, SetPixelSacrificablePortrait |
+
+___
 
 ## Part2Modular
 The API adds a custom AbilityMetaCategory called Part2Modular, accessible from the AbilityManager.
@@ -71,8 +85,10 @@ This metacategory is used in the community patches to determine what sigils the 
 
 A number of vanilla sigils have been marked with this metacategory by default.
 
+___
+
 ## Core Features
----
+
 ### Extending Enumerations
 The base game uses a number of hard-coded lists, called 'Enumerations' or 'Enums', to manage behaviors. For example, the ability "Brittle" is assigned to a card using the enumerated value Ability.Brittle. We can expand these lists, but it requires care, and it is managed by the GuidManager class. This handles the creation of new enumerations and making sure those are handled consistently across mods.
 
@@ -106,3 +122,5 @@ public static int NumberOfItems
 ```
 
 When written like this, the static property "NumberOfItems" now automatically syncs to the save file.
+
+___
