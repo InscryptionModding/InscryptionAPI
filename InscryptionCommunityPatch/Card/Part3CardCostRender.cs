@@ -1,7 +1,6 @@
 using DiskCardGame;
 using HarmonyLib;
 using InscryptionAPI.Card;
-using InscryptionAPI.CardCosts;
 using InscryptionAPI.Helpers;
 using System.Runtime.CompilerServices;
 using UnityEngine;
@@ -105,14 +104,6 @@ public static class Part3CardCostRender
             this.StretchFactor = factor;
         }
     }
-
-    private static List<GemType> BlueGemsCost(this CardInfo card) => card.GemsCost.Where(g => g == GemType.Blue).ToList();
-    private static List<GemType> GreenGemsCost(this CardInfo card) => card.GemsCost.Where(g => g == GemType.Green).ToList();
-    private static List<GemType> OrangeGemsCost(this CardInfo card) => card.GemsCost.Where(g => g == GemType.Orange).ToList();
-
-    private static List<GemType> BlueGemsCost(this PlayableCard card) => card.GemsCost().Where(g => g == GemType.Blue).ToList();
-    private static List<GemType> GreenGemsCost(this PlayableCard card) => card.GemsCost().Where(g => g == GemType.Green).ToList();
-    private static List<GemType> OrangeGemsCost(this PlayableCard card) => card.GemsCost().Where(g => g == GemType.Orange).ToList();
 
     /// <summary>
     /// Hook into this event to be able to add a new custom cost to a card. In your delegate, create a new CustomCostRenderInfo object with the appropriate textures (or no textures if you will use the UpdateCardCostComplex event as well).
@@ -742,12 +733,13 @@ public static class Part3CardCostRender
         // Okay, first we need to figure out how many costs we actually have
         List<CustomCostRenderInfo> costDisplays = new();
         PlayableCard playableCard = __instance as PlayableCard;
+        CardCostDisplayInfo displayCosts = CardCostRender.GetDisplayCosts(__instance.Info, playableCard);
 
-        int energyCost = playableCard?.EnergyCost ?? __instance.Info.EnergyCost;
+        int energyCost = displayCosts.EnergyCost;
         if (energyCost > 0)
             costDisplays.Add(new("Energy"));
 
-        List<GemType> gemsCost = playableCard?.GemsCost() ?? __instance.Info.GemsCost;
+        IReadOnlyList<GemType> gemsCost = displayCosts.GemsCost;
         if (gemsCost.Count > 0)
         {
             if (gemsCost.Count <= 3)
@@ -756,33 +748,25 @@ public static class Part3CardCostRender
             }
             else
             {
-                if ((playableCard?.OrangeGemsCost() ?? __instance.Info.OrangeGemsCost()).Count > 0)
+                if (gemsCost.Contains(GemType.Orange))
                     costDisplays.Add(new("Gems_Orange"));
-                if ((playableCard?.BlueGemsCost() ?? __instance.Info.BlueGemsCost()).Count > 0)
+                if (gemsCost.Contains(GemType.Blue))
                     costDisplays.Add(new("Gems_Blue"));
-                if ((playableCard?.GreenGemsCost() ?? __instance.Info.GreenGemsCost()).Count > 0)
+                if (gemsCost.Contains(GemType.Green))
                     costDisplays.Add(new("Gems_Green"));
             }
         }
 
-        int bonesCost = playableCard?.BonesCost() ?? __instance.Info.BonesCost;
+        int bonesCost = displayCosts.BonesCost;
         if (bonesCost > 0)
             costDisplays.Add(new("Bones", GetIconifiedCostTexture(BoneCostIcon, bonesCost, forceDigitDisplay: true)));
 
-        int bloodCost = playableCard?.BloodCost() ?? __instance.Info.BloodCost;
+        int bloodCost = displayCosts.BloodCost;
         if (bloodCost > 0)
             costDisplays.Add(new("Blood", GetIconifiedCostTexture(BloodCostIcon, BloodCostIconUnlit, bloodCost)));
 
-        // get a list of the custom costs we need textures for
-        // check for PlayableCard to account for possible dynamic costs (no API support but who knows what modders do)
-        List<CardCostManager.FullCardCost> customCosts;
-        if (playableCard != null)
-            customCosts = playableCard.GetCustomCardCosts().Select(x => CardCostManager.AllCustomCosts.Find(c => c.CostName == x.CostName)).ToList();
-        else
-            customCosts = __instance.Info.GetCustomCosts();
-
         // take the 'one' texture and use it as a base for creating the rest of the textures
-        foreach (CardCostManager.FullCardCost fullCost in customCosts)
+        foreach (var (fullCost, amount) in displayCosts.CustomCosts)
         {
             Texture2D costTex = null;
             string key = $"{fullCost.ModGUID}_{fullCost.CostName}_1_part3";
@@ -804,7 +788,6 @@ public static class Part3CardCostRender
             }
             if (costTex != null)
             {
-                int amount = playableCard?.GetCustomCost(fullCost) ?? __instance.Info.GetCustomCost(fullCost);
                 costDisplays.Add(new(
                     fullCost.CostName,
                     GetIconifiedCostTexture(AssembledTextures[key], amount)

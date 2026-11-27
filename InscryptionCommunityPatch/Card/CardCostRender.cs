@@ -2,7 +2,7 @@ using DiskCardGame;
 using GBC;
 using HarmonyLib;
 using InscryptionAPI.Card;
-//using InscryptionAPI.CardCosts;
+using InscryptionAPI.CardCosts;
 using InscryptionAPI.Helpers;
 using UnityEngine;
 
@@ -34,6 +34,36 @@ public static class CardCostRender
     }
 
     /// <summary>
+    /// Resolves the costs for a custom card displayer or stats layer without selecting how they are drawn.
+    /// </summary>
+    /// <param name="cardInfo">The preview definition, for example <see cref="CardRenderInfo.baseInfo"/>.</param>
+    /// <param name="playableCard">The live card, if available, to use its current costs rather than the preview costs.</param>
+    public static CardCostDisplayInfo GetDisplayCosts(CardInfo cardInfo, PlayableCard playableCard = null)
+    {
+        if (cardInfo == null)
+            throw new ArgumentNullException(nameof(cardInfo));
+
+        var (blood, bones, energy, gems) = ReadVanillaCosts(cardInfo, playableCard);
+        return new CardCostDisplayInfo(blood, bones, energy, gems, ReadCustomCosts(cardInfo, playableCard));
+    }
+
+    private static (int Blood, int Bones, int Energy, List<GemType> Gems) ReadVanillaCosts(CardInfo cardInfo, PlayableCard playableCard) =>
+        (playableCard?.BloodCost() ?? cardInfo.BloodCost,
+            playableCard?.BonesCost() ?? cardInfo.BonesCost,
+            playableCard?.EnergyCost ?? cardInfo.EnergyCost,
+            playableCard?.GemsCost() ?? cardInfo.GemsCost);
+
+    internal static IReadOnlyList<(CardCostManager.FullCardCost Definition, int Amount)> ReadCustomCosts(CardInfo cardInfo, PlayableCard playableCard)
+    {
+        IEnumerable<CardCostManager.FullCardCost> definitions = playableCard != null
+            ? playableCard.GetCustomCardCosts().Select(behavior => CardCostManager.AllCustomCosts.Find(cost => cost.CostName == behavior.CostName))
+            : cardInfo.GetCustomCosts();
+
+        return Array.AsReadOnly(definitions.Where(cost => cost != null)
+            .Select(cost => (cost, playableCard?.GetCustomCost(cost) ?? cardInfo.GetCustomCost(cost))).ToArray());
+    }
+
+    /// <summary>
     /// Creates a sprite that combines all of a card's play costs.
     /// </summary>
     public static Sprite FinalCostSprite(CardInfo cardInfo, PlayableCard playableCard, TextureHelper.SpriteType spriteType, int yStep)
@@ -41,10 +71,7 @@ public static class CardCostRender
         Texture2D baseTexture;
         List<Texture2D> masterTextures;
 
-        int bloodCost = playableCard?.BloodCost() ?? cardInfo.BloodCost;
-        int bonesCost = playableCard?.BonesCost() ?? cardInfo.BonesCost;
-        int energyCost = playableCard?.EnergyCost ?? cardInfo.EnergyCost;
-        List<GemType> gemsCost = playableCard?.GemsCost() ?? cardInfo.GemsCost;
+        var (bloodCost, bonesCost, energyCost, gemsCost) = ReadVanillaCosts(cardInfo, playableCard);
 
         bool pixelCard = spriteType != TextureHelper.SpriteType.OversizedCostDecal;
         if (pixelCard)
