@@ -24,7 +24,7 @@ const readCodeFontSize = () => {
     return Number.isFinite(size) && size > 0 ? clamp(size, 8, 40) : 18;
 };
 
-const LAYOUT_STYLE_VARS = ['--code-line-height', '--code-font-size', '--code-font'];
+const LAYOUT_STYLE_VARS = ['--code-line-height', '--code-font-size', '--code-font', '--code-letter-spacing', '--code-word-spacing'];
 const LAYOUT_ATTRS = ['data-code-font'];
 
 const readLayoutSignature = () => {
