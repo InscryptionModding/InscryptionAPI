@@ -146,14 +146,15 @@ public static class Part3CardCostRender
     /// <remarks>The Part3CardCostRender class contains a number of constants that point to important parts of the card.</remarks>
     public static GameObject GetPiece(this DiskCardGame.Card card, string key)
     {
-        if (card == null || string.IsNullOrEmpty(key))
-            return null;
+        return card.gameObject.transform.Find(key)?.gameObject;
+    }
 
+    private static GameObject GetDiskCostPiece(DiskCardGame.Card card, string key)
+    {
         const string diskPath = "Anim/CardBase/";
-        if (key.StartsWith(diskPath, StringComparison.Ordinal) && card.StatsLayer is DiskRenderStatsLayer disk)
-            return disk.transform.Find(key.Substring(diskPath.Length))?.gameObject;
-
-        return card.transform.Find(key)?.gameObject;
+        return card.StatsLayer is DiskRenderStatsLayer disk
+            ? disk.transform.Find(key.Substring(diskPath.Length))?.gameObject
+            : card.GetPiece(key);
     }
 
     private static ConditionalWeakTable<RenderStatsLayer, DiskCardGame.Card> CardRenderReverseLookup = new();
@@ -403,7 +404,7 @@ public static class Part3CardCostRender
         if (layer is not DiskRenderStatsLayer)
             return retval;
 
-        GameObject anchor = card.GetPiece(UPPER_GEM_CONTAINER);
+        GameObject anchor = GetDiskCostPiece(card, UPPER_GEM_CONTAINER);
         if (anchor == null)
             return retval;
 
@@ -425,10 +426,7 @@ public static class Part3CardCostRender
                     children.Add(child);
             }
             for (int i = 0; i < children.Count; i++)
-            {
-                children[i].gameObject.SetActive(false);
                 GameObject.Destroy(children[i].gameObject);
-            }
         }
 
         return retval;
@@ -599,6 +597,7 @@ public static class Part3CardCostRender
     }
 
     private static readonly ConditionalWeakTable<RenderStatsLayer, List<Tuple<GemType, int, Renderer>>> GemContainerLookup = new();
+    private static readonly ConditionalWeakTable<RenderStatsLayer, List<(GemType Gem, GameObject Clone, Renderer Renderer)>> OwnedGemClones = new();
 
     /// <summary>
     /// Gets a reference to the renderers for the three possible gem costs for the card.
@@ -640,14 +639,15 @@ public static class Part3CardCostRender
         retval.RemoveAll(item => item?.Item3 == null);
         if (force)
         {
-            RemoveGemCosts(retval, gemType);
+            RemoveGemCosts(layer, gemType);
+            retval.RemoveAll(item => item.MatchesGem(gemType));
         }
         else if ((verify && ValidateContainer(retval, card)) || retval.Any(item => item.MatchesGem(gemType)))
         {
             return retval;
         }
 
-        GameObject gemContainer = container != null ? container : card.GetPiece(UPPER_GEM_CONTAINER);
+        GameObject gemContainer = container != null ? container : GetDiskCostPiece(card, UPPER_GEM_CONTAINER);
         if (gemContainer == null)
             return retval;
 
@@ -672,7 +672,7 @@ public static class Part3CardCostRender
             if (!COST_LOOKUP.TryGetValue(gem, out string path))
                 continue;
 
-            GameObject template = card.GetPiece(path);
+            GameObject template = GetDiskCostPiece(card, path);
             if (template == null || template.GetComponent<Renderer>() == null)
                 continue;
 
@@ -688,7 +688,9 @@ public static class Part3CardCostRender
                 0f
             );
             counts[gem] += 1;
-            retval.Add(new(gem, counts[gem], costGem.GetComponent<Renderer>()));
+            Renderer renderer = costGem.GetComponent<Renderer>();
+            OwnedGemClones.GetOrCreateValue(layer).Add((gem, costGem, renderer));
+            retval.Add(new(gem, counts[gem], renderer));
 
             idx++;
         }
@@ -696,34 +698,32 @@ public static class Part3CardCostRender
         return retval;
     }
 
-    private static void ClearGemCosts(DiskRenderStatsLayer layer)
+    private static void RemoveGemCosts(RenderStatsLayer layer, GemType? gemType = null)
     {
-        if (GemContainerLookup.TryGetValue(layer, out var gems))
-            RemoveGemCosts(gems, null);
-    }
+        // The public renderer list can contain objects provided by other mods.
+        if (!OwnedGemClones.TryGetValue(layer, out var clones))
+            return;
 
-    private static void RemoveGemCosts(List<Tuple<GemType, int, Renderer>> gems, GemType? gemType)
-    {
-        for (int i = gems.Count - 1; i >= 0; i--)
+        var gems = layer.GetGemCostContainer();
+        for (int i = clones.Count - 1; i >= 0; i--)
         {
-            var item = gems[i];
-            if (item?.Item3 == null)
+            var (type, clone, renderer) = clones[i];
+            if (clone != null && gemType.HasValue && type != gemType.Value)
+                continue;
+
+            gems.RemoveAll(item => ReferenceEquals(item?.Item3, renderer));
+            if (clone != null)
             {
-                gems.RemoveAt(i);
+                clone.SetActive(false);
+                GameObject.Destroy(clone);
             }
-            else if (item.MatchesGem(gemType))
-            {
-                GameObject gem = item.Item3.gameObject;
-                gem.SetActive(false);
-                GameObject.Destroy(gem);
-                gems.RemoveAt(i);
-            }
+            clones.RemoveAt(i);
         }
     }
 
     private static void ResetBlueGemifyGem(DiskCardGame.Card card, bool originalPosition, bool active)
     {
-        GameObject gem = card.GetPiece(BLUE_GEM_ORIGINAL);
+        GameObject gem = GetDiskCostPiece(card, BLUE_GEM_ORIGINAL);
         if (gem == null)
             return;
 
@@ -756,8 +756,12 @@ public static class Part3CardCostRender
         CardCostDisplayInfo displayCosts = CardCostRender.GetDisplayCosts(__instance.Info, playableCard);
 
         int energyCost = displayCosts.EnergyCost;
+        CustomCostRenderInfo nativeEnergy = null;
         if (energyCost > 0)
-            costDisplays.Add(new("Energy"));
+        {
+            nativeEnergy = new("Energy");
+            costDisplays.Add(nativeEnergy);
+        }
 
         IReadOnlyList<GemType> gemsCost = displayCosts.GemsCost;
         if (gemsCost.Count > 0)
@@ -819,11 +823,11 @@ public static class Part3CardCostRender
         UpdateCardCostSimple?.Invoke(__instance.Info, costDisplays);
 
         // Keep the native energy display when the model has no alternate cost anchor.
-        GameObject energyLights = drsl.energyCells != null ? drsl.energyCells.gameObject : __instance.GetPiece(ENERGY_LIGHTS);
-        if (costDisplays.Count == 0 || (costDisplays.Count == 1 && costDisplays[0].CostId == "Energy")
-            || __instance.GetPiece(UPPER_GEM_CONTAINER) == null)
+        GameObject energyLights = drsl.energyCells != null ? drsl.energyCells.gameObject : GetDiskCostPiece(__instance, ENERGY_LIGHTS);
+        if (costDisplays.Count == 0 || (nativeEnergy != null && costDisplays.Count == 1 && ReferenceEquals(costDisplays[0], nativeEnergy))
+            || GetDiskCostPiece(__instance, UPPER_GEM_CONTAINER) == null)
         {
-            ClearGemCosts(drsl);
+            RemoveGemCosts(drsl);
             foreach (GameObject container in drsl.GetCostContainers())
             {
                 if (container != null)
@@ -875,7 +879,7 @@ public static class Part3CardCostRender
         }
         else
         {
-            ClearGemCosts(drsl);
+            RemoveGemCosts(drsl);
         }
         // Handle the energy bars
         bool energyLightsActive = energyCost > 0 || costDisplays.Count == 0;
