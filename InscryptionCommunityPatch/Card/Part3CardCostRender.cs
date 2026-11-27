@@ -415,7 +415,9 @@ public static class Part3CardCostRender
         while (retval.Count < numberOfContainers)
             retval.Add(GenerateSingleAdditionalCostContainer(anchor.transform, retval.Count));
 
-        // Delete every child object that's not the texture displayer
+        GemContainerLookup.TryGetValue(layer, out var registeredGems);
+        OwnedGemClones.TryGetValue(layer, out var ownedClones);
+        // Rebuild the panel children while preserving gem renderers registered by other mods.
         List<Transform> children = new();
         foreach (var container in retval)
         {
@@ -423,7 +425,7 @@ public static class Part3CardCostRender
             for (int i = 0; i < container.transform.childCount; i++)
             {
                 Transform child = container.transform.GetChild(i);
-                if (!child.gameObject.name.Equals("TextureDisplayer"))
+                if (!child.gameObject.name.Equals("TextureDisplayer") && !ContainsForeignGem(child, registeredGems, ownedClones))
                     children.Add(child);
             }
             for (int i = 0; i < children.Count; i++)
@@ -431,6 +433,14 @@ public static class Part3CardCostRender
         }
 
         return retval;
+    }
+
+    private static bool ContainsForeignGem(Transform child, List<Tuple<GemType, int, Renderer>> registeredGems,
+        List<(GemType Gem, GameObject Clone, Renderer Renderer)> ownedClones)
+    {
+        return registeredGems?.Any(entry => entry?.Item3 != null
+            && (entry.Item3.transform == child || entry.Item3.transform.IsChildOf(child))
+            && (ownedClones == null || !ownedClones.Any(gem => ReferenceEquals(gem.Renderer, entry.Item3)))) == true;
     }
 
     private static readonly Dictionary<string, Dictionary<int, Texture2D>> TextureCache = new();
@@ -641,7 +651,6 @@ public static class Part3CardCostRender
         if (force)
         {
             RemoveGemCosts(layer, gemType);
-            retval.RemoveAll(item => item.MatchesGem(gemType));
         }
         else if ((verify && ValidateContainer(retval, card)) || retval.Any(item => item.MatchesGem(gemType)))
         {
@@ -706,6 +715,7 @@ public static class Part3CardCostRender
             return;
 
         var gems = layer.GetGemCostContainer();
+        List<GameObject> toDestroy = null;
         for (int i = clones.Count - 1; i >= 0; i--)
         {
             var (type, clone, renderer) = clones[i];
@@ -714,11 +724,18 @@ public static class Part3CardCostRender
 
             gems.RemoveAll(item => ReferenceEquals(item?.Item3, renderer));
             if (clone != null)
-            {
-                clone.SetActive(false);
-                GameObject.Destroy(clone);
-            }
+                (toDestroy ??= new()).Add(clone);
             clones.RemoveAt(i);
+        }
+
+        if (toDestroy == null)
+            return;
+
+        foreach (GameObject clone in toDestroy)
+        {
+            foreach (Renderer renderer in clone.GetComponentsInChildren<Renderer>(true))
+                renderer.enabled = false;
+            GameObject.Destroy(clone);
         }
     }
 
@@ -847,6 +864,7 @@ public static class Part3CardCostRender
         }
 
         // Get all the cost containers
+        RemoveGemCosts(drsl);
         List<GameObject> costContainers = __instance.GetCostContainers(costDisplays.Count);
         for (int i = 0; i < costContainers.Count; i++)
         {
@@ -887,10 +905,6 @@ public static class Part3CardCostRender
             DisplayGemCosts(__instance, costDisplays, "Gems_Blue", GemType.Blue, blueGemsCost);
             DisplayGemCosts(__instance, costDisplays, "Gems_Green", GemType.Green, greenGemsCost);
         }
-        else
-        {
-            RemoveGemCosts(drsl);
-        }
         // Handle the energy bars
         bool energyLightsActive = energyCost > 0 || costDisplays.Count == 0;
         if (energyLights != null)
@@ -914,10 +928,14 @@ public static class Part3CardCostRender
         if (stretchFactor > 1f)
             cost.Stretch(stretchFactor);
 
-        foreach (var item in card.GetGemCostContainer(force: true, container: cost.CostContainer, gemType: gemType, stretchFactor: stretchFactor))
+        card.GetGemCostContainer(force: true, container: cost.CostContainer, gemType: gemType, stretchFactor: stretchFactor);
+        if (OwnedGemClones.TryGetValue(card.StatsLayer, out var clones))
         {
-            if (item?.Item3 != null && item.MatchesGem(gemType))
-                item.Item3.gameObject.SetActive(true);
+            foreach (var (type, clone, _) in clones.ToArray())
+            {
+                if (clone != null && clone.transform.parent == cost.CostContainer.transform && (!gemType.HasValue || type == gemType.Value))
+                    clone.SetActive(true);
+            }
         }
     }
     [HarmonyPatch(typeof(DiskRenderStatsLayer), nameof(DiskRenderStatsLayer.ManagedUpdate))]
