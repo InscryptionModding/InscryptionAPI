@@ -40,7 +40,8 @@ public interface IOnOtherCardAddedToHand
 }
 
 /// <summary>
-/// Trigger that is triggered after any card is assigned to a slot, but only if it was assigned to a slot before.
+/// Runs after a card moves from one slot to another with assignment triggers enabled.
+/// The card must still occupy the destination after native assignment triggers finish.
 /// </summary>
 public interface IOnCardAssignedToSlotNoResolve
 {
@@ -59,7 +60,8 @@ public interface IOnCardAssignedToSlotNoResolve
 }
 
 /// <summary>
-/// Trigger that is triggered after any card is assigned to a slot. The difference between this and normal OnOtherCardAssignedToSlot is that this trigger also provides information about the new and old slot.
+/// Runs after native assignment triggers if the card still occupies the requested destination.
+/// Provides the slots for that assignment, including a null previous slot for initial placement.
 /// </summary>
 public interface IOnCardAssignedToSlotContext
 {

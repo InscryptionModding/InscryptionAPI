@@ -95,25 +95,25 @@ internal static class CustomTriggerPatches
     }
 
     [HarmonyPostfix, HarmonyPatch(typeof(BoardManager), nameof(BoardManager.AssignCardToSlot))]
-    private static IEnumerator TriggerOnOtherCardAssignedToSlotInHand(IEnumerator result, PlayableCard card, bool resolveTriggers)
+    private static IEnumerator TriggerOnOtherCardAssignedToSlotInHand(IEnumerator result, PlayableCard card, CardSlot slot, bool resolveTriggers)
     {
-        CardSlot slot2 = card.Slot;
+        CardSlot previousSlot = card.Slot;
         yield return result;
-        if (resolveTriggers && slot2 != card.Slot)
-        {
-            yield return CustomTriggerFinder.TriggerAll<IOnCardAssignedToSlotContext>(false, x => x.RespondsToCardAssignedToSlotContext(card, slot2, card.Slot), x =>
-                x.OnCardAssignedToSlotContext(card, slot2, card.Slot));
-        }
-        if (resolveTriggers && slot2 != card.Slot)
-        {
-            yield return CustomTriggerFinder.TriggerInHand<IOnOtherCardAssignedToSlotInHand>(x => x.RespondsToOtherCardAssignedToSlotInHand(card), x => x.OnOtherCardAssignedToSlotInHand(card));
-        }
-        if (resolveTriggers && slot2 != card.Slot && slot2 != null)
-        {
+        // Vanilla triggers can move or remove the card before this coroutine resumes.
+        if (!resolveTriggers || previousSlot == slot || !IsCurrentAssignment(card, slot))
+            yield break;
+
+        yield return CustomTriggerFinder.TriggerAll<IOnCardAssignedToSlotContext>(false, x => x.RespondsToCardAssignedToSlotContext(card, previousSlot, slot), x =>
+            x.OnCardAssignedToSlotContext(card, previousSlot, slot));
+        if (!IsCurrentAssignment(card, slot))
+            yield break;
+
+        yield return CustomTriggerFinder.TriggerInHand<IOnOtherCardAssignedToSlotInHand>(x => x.RespondsToOtherCardAssignedToSlotInHand(card), x => x.OnOtherCardAssignedToSlotInHand(card));
+        if (previousSlot != null && IsCurrentAssignment(card, slot))
             yield return CustomTriggerFinder.TriggerAll<IOnCardAssignedToSlotNoResolve>(false, x => x.RespondsToCardAssignedToSlotNoResolve(card), x => x.OnCardAssignedToSlotNoResolve(card));
-        }
-        yield break;
     }
+
+    private static bool IsCurrentAssignment(PlayableCard card, CardSlot slot) => card != null && slot != null && card.Slot == slot && slot.Card == card;
     #endregion
 
     #region OnDie
