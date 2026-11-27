@@ -1,4 +1,7 @@
 using DiskCardGame;
+using InscryptionAPI.Card;
+using InscryptionAPI.CardCosts;
+//using InscryptionAPI.CardCosts;
 using InscryptionAPI.Helpers;
 using UnityEngine;
 
@@ -31,8 +34,17 @@ public static class Part1CardCostRender
         if (bloodCost > 0)
             costTextures.Add(CardCostRender.GetTextureByName($"blood_cost_{Mathf.Min(14, bloodCost)}"));
 
-        foreach (var (fullCost, amount) in CardCostRender.ReadCustomCosts(cardInfo, playableCard))
+        // get a list of the custom costs we need textures for
+        // check for PlayableCard to account for possible dynamic costs (no API support but who knows what modders do)
+        List<CardCostManager.FullCardCost> customCosts;
+        if (playableCard != null)
+            customCosts = playableCard.GetCustomCardCosts().Select(x => CardCostManager.AllCustomCosts.Find(c => c.CostName == x.CostName)).ToList();
+        else
+            customCosts = cardInfo.GetCustomCosts();
+
+        foreach (CardCostManager.FullCardCost fullCost in customCosts)
         {
+            int amount = playableCard?.GetCustomCost(fullCost) ?? cardInfo.GetCustomCost(fullCost);
             string key = $"{fullCost.ModGUID}_{fullCost.CostName}_{amount}_part1";
             if (CardCostRender.AssembledTextures.ContainsKey(key))
             {

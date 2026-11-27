@@ -43,17 +43,14 @@ public static class CardCostRender
         if (cardInfo == null)
             throw new ArgumentNullException(nameof(cardInfo));
 
-        var (blood, bones, energy, gems) = ReadVanillaCosts(cardInfo, playableCard);
+        int blood = playableCard?.BloodCost() ?? cardInfo.BloodCost;
+        int bones = playableCard?.BonesCost() ?? cardInfo.BonesCost;
+        int energy = playableCard?.EnergyCost ?? cardInfo.EnergyCost;
+        List<GemType> gems = playableCard?.GemsCost() ?? cardInfo.GemsCost;
         return new CardCostDisplayInfo(blood, bones, energy, gems, ReadCustomCosts(cardInfo, playableCard));
     }
 
-    private static (int Blood, int Bones, int Energy, List<GemType> Gems) ReadVanillaCosts(CardInfo cardInfo, PlayableCard playableCard) =>
-        (playableCard?.BloodCost() ?? cardInfo.BloodCost,
-            playableCard?.BonesCost() ?? cardInfo.BonesCost,
-            playableCard?.EnergyCost ?? cardInfo.EnergyCost,
-            playableCard?.GemsCost() ?? cardInfo.GemsCost);
-
-    internal static IReadOnlyList<(CardCostManager.FullCardCost Definition, int Amount)> ReadCustomCosts(CardInfo cardInfo, PlayableCard playableCard)
+    private static IReadOnlyList<(CardCostManager.FullCardCost Definition, int Amount)> ReadCustomCosts(CardInfo cardInfo, PlayableCard playableCard)
     {
         IEnumerable<CardCostManager.FullCardCost> definitions = playableCard != null
             ? playableCard.GetCustomCardCosts().Select(behavior => CardCostManager.AllCustomCosts.Find(cost => cost.CostName == behavior.CostName))
@@ -71,7 +68,10 @@ public static class CardCostRender
         Texture2D baseTexture;
         List<Texture2D> masterTextures;
 
-        var (bloodCost, bonesCost, energyCost, gemsCost) = ReadVanillaCosts(cardInfo, playableCard);
+        int bloodCost = playableCard?.BloodCost() ?? cardInfo.BloodCost;
+        int bonesCost = playableCard?.BonesCost() ?? cardInfo.BonesCost;
+        int energyCost = playableCard?.EnergyCost ?? cardInfo.EnergyCost;
+        List<GemType> gemsCost = playableCard?.GemsCost() ?? cardInfo.GemsCost;
 
         bool pixelCard = spriteType != TextureHelper.SpriteType.OversizedCostDecal;
         if (pixelCard)

@@ -1,6 +1,7 @@
 using DiskCardGame;
 using HarmonyLib;
 using InscryptionAPI.Card;
+using InscryptionAPI.CardCosts;
 using InscryptionAPI.Helpers;
 using System.Runtime.CompilerServices;
 using UnityEngine;
@@ -753,9 +754,8 @@ public static class Part3CardCostRender
         // Okay, first we need to figure out how many costs we actually have
         List<CustomCostRenderInfo> costDisplays = new();
         PlayableCard playableCard = __instance as PlayableCard;
-        CardCostDisplayInfo displayCosts = CardCostRender.GetDisplayCosts(__instance.Info, playableCard);
 
-        int energyCost = displayCosts.EnergyCost;
+        int energyCost = playableCard?.EnergyCost ?? __instance.Info.EnergyCost;
         CustomCostRenderInfo nativeEnergy = null;
         if (energyCost > 0)
         {
@@ -763,7 +763,7 @@ public static class Part3CardCostRender
             costDisplays.Add(nativeEnergy);
         }
 
-        IReadOnlyList<GemType> gemsCost = displayCosts.GemsCost;
+        List<GemType> gemsCost = playableCard?.GemsCost() ?? __instance.Info.GemsCost;
         if (gemsCost.Count > 0)
         {
             if (gemsCost.Count <= 3)
@@ -772,25 +772,31 @@ public static class Part3CardCostRender
             }
             else
             {
-                if (gemsCost.Contains(GemType.Orange))
+                if (CountGemCost(__instance, GemType.Orange) > 0)
                     costDisplays.Add(new("Gems_Orange"));
-                if (gemsCost.Contains(GemType.Blue))
+                if (CountGemCost(__instance, GemType.Blue) > 0)
                     costDisplays.Add(new("Gems_Blue"));
-                if (gemsCost.Contains(GemType.Green))
+                if (CountGemCost(__instance, GemType.Green) > 0)
                     costDisplays.Add(new("Gems_Green"));
             }
         }
 
-        int bonesCost = displayCosts.BonesCost;
+        int bonesCost = playableCard?.BonesCost() ?? __instance.Info.BonesCost;
         if (bonesCost > 0)
             costDisplays.Add(new("Bones", GetIconifiedCostTexture(BoneCostIcon, bonesCost, forceDigitDisplay: true)));
 
-        int bloodCost = displayCosts.BloodCost;
+        int bloodCost = playableCard?.BloodCost() ?? __instance.Info.BloodCost;
         if (bloodCost > 0)
             costDisplays.Add(new("Blood", GetIconifiedCostTexture(BloodCostIcon, BloodCostIconUnlit, bloodCost)));
 
+        List<CardCostManager.FullCardCost> customCosts;
+        if (playableCard != null)
+            customCosts = playableCard.GetCustomCardCosts().Select(x => CardCostManager.AllCustomCosts.Find(c => c.CostName == x.CostName)).ToList();
+        else
+            customCosts = __instance.Info.GetCustomCosts();
+
         // take the 'one' texture and use it as a base for creating the rest of the textures
-        foreach (var (fullCost, amount) in displayCosts.CustomCosts)
+        foreach (CardCostManager.FullCardCost fullCost in customCosts)
         {
             Texture2D costTex = null;
             string key = $"{fullCost.ModGUID}_{fullCost.CostName}_1_part3";
@@ -812,6 +818,7 @@ public static class Part3CardCostRender
             }
             if (costTex != null)
             {
+                int amount = playableCard?.GetCustomCost(fullCost) ?? __instance.Info.GetCustomCost(fullCost);
                 costDisplays.Add(new(
                     fullCost.CostName,
                     GetIconifiedCostTexture(AssembledTextures[key], amount)
@@ -873,9 +880,12 @@ public static class Part3CardCostRender
         }
         else if (gemsCost.Count > 3)
         {
-            DisplayGemCosts(__instance, costDisplays, "Gems_Orange", GemType.Orange, gemsCost.Count(gem => gem == GemType.Orange));
-            DisplayGemCosts(__instance, costDisplays, "Gems_Blue", GemType.Blue, gemsCost.Count(gem => gem == GemType.Blue));
-            DisplayGemCosts(__instance, costDisplays, "Gems_Green", GemType.Green, gemsCost.Count(gem => gem == GemType.Green));
+            int orangeGemsCost = CountGemCost(__instance, GemType.Orange);
+            int blueGemsCost = CountGemCost(__instance, GemType.Blue);
+            int greenGemsCost = CountGemCost(__instance, GemType.Green);
+            DisplayGemCosts(__instance, costDisplays, "Gems_Orange", GemType.Orange, orangeGemsCost);
+            DisplayGemCosts(__instance, costDisplays, "Gems_Blue", GemType.Blue, blueGemsCost);
+            DisplayGemCosts(__instance, costDisplays, "Gems_Green", GemType.Green, greenGemsCost);
         }
         else
         {
@@ -887,6 +897,9 @@ public static class Part3CardCostRender
             energyLights.SetActive(energyLightsActive);
         ResetBlueGemifyGem(__instance, true, __instance.Info.Gemified && energyLightsActive);
     }
+
+    private static int CountGemCost(DiskCardGame.Card card, GemType color) =>
+        ((card as PlayableCard)?.GemsCost() ?? card.Info.GemsCost).Count(gem => gem == color);
 
     private static void DisplayGemCosts(DiskCardGame.Card card, List<CustomCostRenderInfo> costs, string id, GemType? gemType = null, int count = 3)
     {
