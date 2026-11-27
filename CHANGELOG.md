@@ -1,3 +1,9 @@
+# 2.24.2
+- Disk cost rendering resolves nodes on the active model and tolerates missing optional nodes.
+- 3D ability icon groups can expand from valid templates without duplicating groups. Disk stat icons use the active card or displayer binding.
+- Added `CardCostRender.GetDisplayCosts` for custom renderers that need the same current cost values as Paper and Disk displays.
+- Slot assignment triggers preserve the previous and requested slots when callbacks move a card again.
+
 # 2.24.1
 * Added Extensions for setting the IconTexture of a Starter Deck.
 * Added 2 Alternate Constructors for making a StarterDeck with a Display Name different from its Internal Name.
