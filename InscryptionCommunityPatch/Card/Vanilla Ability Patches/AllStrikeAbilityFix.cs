@@ -48,7 +48,8 @@ public class AllStrikeAbilityFix
     {
         // for whatever reason the transpiler breaks the if-else statement so we need to put this if-statement here
         // if this card isn't a giant add opposingSlot, otherwise add slot 0
-        if (!list2.Exists((CardSlot x) => x.Card != null && !__instance.CanAttackDirectly(x)))
-            list.Add(__instance.LacksTrait(Trait.Giant) ? __instance.Slot.opposingSlot : list2[0]);
+        if (!list2.Exists((CardSlot x) => x.Card != null && !__instance.CanAttackDirectly(x))) {
+            list.Add(__instance.Slot.opposingSlot);
+        }
     }
 }
