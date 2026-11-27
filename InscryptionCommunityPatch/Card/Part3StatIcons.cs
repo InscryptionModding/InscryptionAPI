@@ -21,12 +21,12 @@ internal static class Part3StatIcons
 
     [HarmonyPatch(typeof(DiskCardGame.Card), "RenderCard")]
     [HarmonyPrefix]
-    private static void UpdateLiveRenderedCard(ref DiskCardGame.Card __instance)
+    private static void UpdateBoundCardStatIcons(DiskCardGame.Card __instance)
     {
-        if (SaveManager.SaveFile == null || !SaveManager.SaveFile.IsPart3)
+        if (__instance.StatsLayer is not DiskRenderStatsLayer)
             return;
 
-        CardStatIcons icons = __instance.gameObject.GetComponentInChildren<CardStatIcons>();
+        CardStatIcons icons = __instance.statIcons;
 
         if (icons == null)
             return;
@@ -50,12 +50,13 @@ internal static class Part3StatIcons
 
     [HarmonyPatch(typeof(CardDisplayer3D), "DisplayInfo")]
     [HarmonyPrefix]
-    private static void UpdateCardDisplayer(ref CardDisplayer3D __instance)
+    private static void UpdateCardDisplayer(CardDisplayer3D __instance)
     {
         if (__instance is not DiskScreenCardDisplayer)
             return;
 
-        CardStatIcons icons = __instance.gameObject.GetComponentInChildren<CardStatIcons>();
+        // Both queued and live renders call DisplayInfo on their actual displayer.
+        CardStatIcons icons = __instance.StatIcons;
 
         if (icons == null)
             return;
@@ -79,37 +80,6 @@ internal static class Part3StatIcons
         }
     }
 
-    [HarmonyPatch(typeof(CardRenderCamera), "LiveRenderCard")]
-    [HarmonyPrefix]
-    private static void UpdateCamera(ref CardRenderCamera __instance)
-    {
-        if (!SaveManager.SaveFile.IsPart3)
-            return;
-
-        CardStatIcons icons = __instance.gameObject.GetComponentInChildren<CardStatIcons>();
-
-        if (icons == null)
-            return;
-
-        if (icons.attackIconRenderer != null)
-        {
-            icons.attackIconRenderer.gameObject.transform.localPosition = RIGHT_ICON; // Flipped for some reason??
-            icons.attackIconRenderer.gameObject.transform.localScale = ICON_SCALE;
-            icons.attackIconRenderer.gameObject.layer = LayerMask.NameToLayer("CardOffscreenEmission");
-            icons.attackIconRenderer.material.color = ICON_COLOR;
-            icons.attackIconRenderer.enabled = true;
-        }
-
-        if (icons.healthIconRenderer != null)
-        {
-            icons.healthIconRenderer.gameObject.transform.localPosition = LEFT_ICON; // Flipped for some reason??
-            icons.healthIconRenderer.gameObject.transform.localScale = ICON_SCALE;
-            icons.healthIconRenderer.gameObject.layer = LayerMask.NameToLayer("CardOffscreenEmission");
-            icons.healthIconRenderer.material.color = ICON_COLOR;
-            icons.healthIconRenderer.enabled = true;
-        }
-    }
-
     private static bool OpponentHasGem(GemType gem)
     {
         return Singleton<OpponentGemsManager>.Instance && Singleton<OpponentGemsManager>.Instance.HasGem(gem);
@@ -119,6 +89,9 @@ internal static class Part3StatIcons
     [HarmonyPrefix]
     private static bool RenderOpposingGemification(DiskRenderStatsLayer __instance)
     {
+        if (__instance.gemSquares is not { Count: > 0 } || __instance.gemSquares[0] == null || __instance.gemRenderers == null)
+            return false;
+
         if (!__instance.PlayableCard)
             return true;
 
@@ -126,14 +99,18 @@ internal static class Part3StatIcons
         {
             for (int i = 0; i < __instance.gemRenderers.Count; i++)
             {
-                __instance.gemRenderers[i].GetPropertyBlock(__instance.gemsPropertyBlock);
+                Renderer renderer = __instance.gemRenderers[i];
+                if (renderer == null)
+                    continue;
+
+                renderer.GetPropertyBlock(__instance.gemsPropertyBlock);
 
                 GemType target = (GemType)i;
 
-                bool show = __instance.PlayableCard && (__instance.PlayableCard.OpponentCard ? OpponentHasGem(target) : ResourcesManager.Instance.HasGem(target));
+                bool show = __instance.PlayableCard.OpponentCard ? OpponentHasGem(target) : ResourcesManager.Instance && ResourcesManager.Instance.HasGem(target);
 
                 __instance.gemsPropertyBlock.SetColor("_EmissionColor", show ? Color.white : Color.black);
-                __instance.gemRenderers[i].SetPropertyBlock(__instance.gemsPropertyBlock);
+                renderer.SetPropertyBlock(__instance.gemsPropertyBlock);
             }
         }
         return false;

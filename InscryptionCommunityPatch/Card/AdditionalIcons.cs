@@ -10,11 +10,9 @@ internal class RenderAdditionalSigils // Modifies how cards are rendered so up t
 {
     private static Vector3 LocalScaleBase3D => SaveManager.SaveFile.IsPart1 ? new(0.2175f, 0.145f, 1f) : new(0.3f, 0.3f, 0.75f);
 
-    private static GameObject NewIconGroup(CardAbilityIcons controller, Transform parent, int newSlotNum)
+    private static GameObject NewIconGroup(CardAbilityIcons controller, Transform template, int newSlotNum)
     {
-        GameObject prevIconGroup = parent.Find($"DefaultIcons_{newSlotNum - 1}Abilities").gameObject;
-
-        GameObject newIconGroup = UnityObject.Instantiate(prevIconGroup, parent);
+        GameObject newIconGroup = UnityObject.Instantiate(template.gameObject, template.parent);
         newIconGroup.name = $"DefaultIcons_{newSlotNum}Abilities";
 
         controller.defaultIconGroups.Add(newIconGroup);
@@ -44,29 +42,47 @@ internal class RenderAdditionalSigils // Modifies how cards are rendered so up t
             return;
 
         CardAbilityIcons controller = abilityIconParent.gameObject.GetComponent<CardAbilityIcons>();
-        if (controller == null)
+        if (controller == null || controller.defaultIconGroups == null)
             return;
 
-        // create the ability icon groups if they don't exist
-        if (abilityIconParent.Find("DefaultIcons_4Abilities") == null)
-            AddQuadrupleIconSlotToCard(controller, abilityIconParent);
+        List<GameObject> groups = controller.defaultIconGroups;
+        // Vanilla chooses an icon group by position in this list. Never append across a gap.
+        for (int count = 4; count <= 8; count++)
+        {
+            if (groups.Count >= count)
+                continue;
+            if (groups.Count != count - 1)
+                break;
 
-        if (abilityIconParent.Find("DefaultIcons_5Abilities") == null)
-            AddQuintupleIconSlotToCard(controller, abilityIconParent);
+            Transform existing = abilityIconParent.Find($"DefaultIcons_{count}Abilities");
+            if (existing != null)
+            {
+                if (groups.Contains(existing.gameObject) || existing.gameObject.GetComponentsInChildren<AbilityIconInteractable>(true).Length != count)
+                    break;
 
-        if (abilityIconParent.Find("DefaultIcons_6Abilities") == null)
-            AddSextupleIconSlotToCard(controller, abilityIconParent);
+                groups.Add(existing.gameObject);
+                continue;
+            }
 
-        if (abilityIconParent.Find("DefaultIcons_7Abilities") == null)
-            AddSeptupleIconSlotToCard(controller, abilityIconParent);
+            GameObject template = groups[count - 2];
+            if (template == null || template.transform.parent != abilityIconParent || template.transform.childCount != count - 1
+                || template.transform.Cast<Transform>().Any(icon => icon.gameObject.GetComponentsInChildren<AbilityIconInteractable>(true).Length != 1))
+                break;
 
-        if (abilityIconParent.Find("DefaultIcons_8Abilities") == null)
-            AddOctupleIconSlotToCard(controller, abilityIconParent);
+            switch (count)
+            {
+                case 4: AddQuadrupleIconSlotToCard(controller, template.transform); break;
+                case 5: AddQuintupleIconSlotToCard(controller, template.transform); break;
+                case 6: AddSextupleIconSlotToCard(controller, template.transform); break;
+                case 7: AddSeptupleIconSlotToCard(controller, template.transform); break;
+                case 8: AddOctupleIconSlotToCard(controller, template.transform); break;
+            }
+        }
     }
 
-    private static void AddQuadrupleIconSlotToCard(CardAbilityIcons controller, Transform abilityIconParent)
+    private static void AddQuadrupleIconSlotToCard(CardAbilityIcons controller, Transform template)
     {
-        GameObject iconGroup4 = NewIconGroup(controller, abilityIconParent, 4);
+        GameObject iconGroup4 = NewIconGroup(controller, template, 4);
 
         List<Transform> icons = NewIcons(iconGroup4, 4);
 
@@ -75,9 +91,9 @@ internal class RenderAdditionalSigils // Modifies how cards are rendered so up t
         icons[2].localPosition = new Vector3(-0.12f, -0.077f, 0f);
         icons[3].localPosition = new Vector3(0.12f, -0.077f, 0f);
     }
-    private static void AddQuintupleIconSlotToCard(CardAbilityIcons controller, Transform abilityIconParent)
+    private static void AddQuintupleIconSlotToCard(CardAbilityIcons controller, Transform template)
     {
-        GameObject iconGroup5 = NewIconGroup(controller, abilityIconParent, 5);
+        GameObject iconGroup5 = NewIconGroup(controller, template, 5);
 
         List<Transform> icons = NewIcons(iconGroup5, 5, 0.75f);
 
@@ -98,9 +114,9 @@ internal class RenderAdditionalSigils // Modifies how cards are rendered so up t
             icons[4].localPosition = new Vector3(0f, -0.125f, 0f);
         }
     }
-    private static void AddSextupleIconSlotToCard(CardAbilityIcons controller, Transform abilityIconParent)
+    private static void AddSextupleIconSlotToCard(CardAbilityIcons controller, Transform template)
     {
-        GameObject iconGroup6 = NewIconGroup(controller, abilityIconParent, 6);
+        GameObject iconGroup6 = NewIconGroup(controller, template, 6);
 
         List<Transform> icons = NewIcons(iconGroup6, 6, 0.75f);
 
@@ -116,9 +132,9 @@ internal class RenderAdditionalSigils // Modifies how cards are rendered so up t
             icons[5].localPosition = new Vector3(0.14f, -0.125f, 0f);
         }
     }
-    private static void AddSeptupleIconSlotToCard(CardAbilityIcons controller, Transform abilityIconParent)
+    private static void AddSeptupleIconSlotToCard(CardAbilityIcons controller, Transform template)
     {
-        GameObject iconGroup7 = NewIconGroup(controller, abilityIconParent, 7);
+        GameObject iconGroup7 = NewIconGroup(controller, template, 7);
 
         List<Transform> icons = NewIcons(iconGroup7, 7, 0.5625f);
 
@@ -139,9 +155,9 @@ internal class RenderAdditionalSigils // Modifies how cards are rendered so up t
             icons[6].localPosition = new Vector3(0.28f, -0.125f, 0f);
         }
     }
-    private static void AddOctupleIconSlotToCard(CardAbilityIcons controller, Transform abilityIconParent)
+    private static void AddOctupleIconSlotToCard(CardAbilityIcons controller, Transform template)
     {
-        GameObject iconGroup8 = NewIconGroup(controller, abilityIconParent, 8);
+        GameObject iconGroup8 = NewIconGroup(controller, template, 8);
 
         List<Transform> icons = NewIcons(iconGroup8, 8, 0.5625f);
 
@@ -319,7 +335,7 @@ internal class RenderAdditionalSigils // Modifies how cards are rendered so up t
     [HarmonyPrefix, HarmonyPatch(typeof(CardAbilityIcons), nameof(CardAbilityIcons.UpdateAbilityIcons))]
     private static void AddExtraAbilityIcons(CardAbilityIcons __instance)
     {
-        if (SaveManager.SaveFile.IsPart1 || SaveManager.SaveFile.IsPart3)
+        if (SaveManager.SaveFile is { } save && (save.IsPart1 || save.IsPart3))
             AddIconSlotsToCard(__instance.transform);
     }
 }
