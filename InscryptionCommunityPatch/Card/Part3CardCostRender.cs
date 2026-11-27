@@ -640,12 +640,7 @@ public static class Part3CardCostRender
         retval.RemoveAll(item => item?.Item3 == null);
         if (force)
         {
-            foreach (var item in retval.Where(item => item.MatchesGem(gemType)))
-            {
-                item.Item3.gameObject.SetActive(false);
-                GameObject.Destroy(item.Item3.gameObject);
-            }
-            retval.RemoveAll(item => item.MatchesGem(gemType));
+            RemoveGemCosts(retval, gemType);
         }
         else if ((verify && ValidateContainer(retval, card)) || retval.Any(item => item.MatchesGem(gemType)))
         {
@@ -699,6 +694,31 @@ public static class Part3CardCostRender
         }
 
         return retval;
+    }
+
+    private static void ClearGemCosts(DiskRenderStatsLayer layer)
+    {
+        if (GemContainerLookup.TryGetValue(layer, out var gems))
+            RemoveGemCosts(gems, null);
+    }
+
+    private static void RemoveGemCosts(List<Tuple<GemType, int, Renderer>> gems, GemType? gemType)
+    {
+        for (int i = gems.Count - 1; i >= 0; i--)
+        {
+            var item = gems[i];
+            if (item?.Item3 == null)
+            {
+                gems.RemoveAt(i);
+            }
+            else if (item.MatchesGem(gemType))
+            {
+                GameObject gem = item.Item3.gameObject;
+                gem.SetActive(false);
+                GameObject.Destroy(gem);
+                gems.RemoveAt(i);
+            }
+        }
     }
 
     private static void ResetBlueGemifyGem(DiskCardGame.Card card, bool originalPosition, bool active)
@@ -803,6 +823,7 @@ public static class Part3CardCostRender
         if (costDisplays.Count == 0 || (costDisplays.Count == 1 && costDisplays[0].CostId == "Energy")
             || __instance.GetPiece(UPPER_GEM_CONTAINER) == null)
         {
+            ClearGemCosts(drsl);
             foreach (GameObject container in drsl.GetCostContainers())
             {
                 if (container != null)
@@ -852,9 +873,9 @@ public static class Part3CardCostRender
             DisplayGemCosts(__instance, costDisplays, "Gems_Blue", GemType.Blue, gemsCost.Count(gem => gem == GemType.Blue));
             DisplayGemCosts(__instance, costDisplays, "Gems_Green", GemType.Green, gemsCost.Count(gem => gem == GemType.Green));
         }
-        else if (GemContainerLookup.TryGetValue(drsl, out var gems))
+        else
         {
-            gems.Clear();
+            ClearGemCosts(drsl);
         }
         // Handle the energy bars
         bool energyLightsActive = energyCost > 0 || costDisplays.Count == 0;
