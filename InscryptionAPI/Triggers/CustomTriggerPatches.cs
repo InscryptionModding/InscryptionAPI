@@ -103,14 +103,20 @@ internal static class CustomTriggerPatches
         if (!resolveTriggers || previousSlot == slot || !IsCurrentAssignment(card, slot))
             yield break;
 
-        yield return CustomTriggerFinder.TriggerAll<IOnCardAssignedToSlotContext>(false, x => x.RespondsToCardAssignedToSlotContext(card, previousSlot, slot), x =>
-            x.OnCardAssignedToSlotContext(card, previousSlot, slot));
+        // A receiver may move the card before the next receiver is evaluated.
+        yield return CustomTriggerFinder.TriggerAll<IOnCardAssignedToSlotContext>(false,
+            x => IsCurrentAssignment(card, slot) && x.RespondsToCardAssignedToSlotContext(card, previousSlot, slot) && IsCurrentAssignment(card, slot),
+            x => x.OnCardAssignedToSlotContext(card, previousSlot, slot));
         if (!IsCurrentAssignment(card, slot))
             yield break;
 
-        yield return CustomTriggerFinder.TriggerInHand<IOnOtherCardAssignedToSlotInHand>(x => x.RespondsToOtherCardAssignedToSlotInHand(card), x => x.OnOtherCardAssignedToSlotInHand(card));
+        yield return CustomTriggerFinder.TriggerInHand<IOnOtherCardAssignedToSlotInHand>(
+            x => IsCurrentAssignment(card, slot) && x.RespondsToOtherCardAssignedToSlotInHand(card) && IsCurrentAssignment(card, slot),
+            x => x.OnOtherCardAssignedToSlotInHand(card));
         if (previousSlot != null && IsCurrentAssignment(card, slot))
-            yield return CustomTriggerFinder.TriggerAll<IOnCardAssignedToSlotNoResolve>(false, x => x.RespondsToCardAssignedToSlotNoResolve(card), x => x.OnCardAssignedToSlotNoResolve(card));
+            yield return CustomTriggerFinder.TriggerAll<IOnCardAssignedToSlotNoResolve>(false,
+                x => IsCurrentAssignment(card, slot) && x.RespondsToCardAssignedToSlotNoResolve(card) && IsCurrentAssignment(card, slot),
+                x => x.OnCardAssignedToSlotNoResolve(card));
     }
 
     private static bool IsCurrentAssignment(PlayableCard card, CardSlot slot) => card != null && slot != null && card.Slot == slot && slot.Card == card;
