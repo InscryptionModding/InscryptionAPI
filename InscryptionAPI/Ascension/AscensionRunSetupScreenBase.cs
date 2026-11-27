@@ -5,49 +5,106 @@ using UnityEngine;
 
 namespace InscryptionAPI.Ascension;
 
+/// <summary>
+/// Abstract class for creating custom menu screens to be displayed in Kaycee's Mod.
+/// </summary>
 public abstract class AscensionRunSetupScreenBase : ManagedBehaviour
 {
-    // This will display near the top of the screen.
-    // The very top will be the challenge level text; below that will be this
+    /// <summary>
+    /// Header name of this screen.
+    /// </summary>
+    /// <remarks>
+    /// This will display near the top of the screen.
+    /// The very top will be the challenge level text; below that will be this.
+    /// </remarks>
     public abstract string headerText { get; }
 
-    // If this is true, it will show the card displayer at the footer below the challenge text
-    // Seting this to true will also enable the DisplayCardInfo and ClearCardInfo methods
-    // If this is not true, those methods will do nothing
+    /// <summary>
+    /// Whether the card displayer should be shown and usable on this screen.
+    /// </summary>
+    /// <remarks>
+    /// If this is true, it will show the card displayer at the footer below the challenge text
+    /// Seting this to true will also enable the <see cref="DisplayCardInfo"/> and <see cref="ClearCardInfo"/> methods
+    /// If this is not true, those methods will do nothing
+    /// </remarks>
     public abstract bool showCardDisplayer { get; }
 
-    // If this is true, it will put a card panel in the middle of the screen
-    // The card panel will be able to display up to 7 cards
-    // and will have a left/right button
+    /// <summary>
+    /// Whether the card panel should be shown on this screen.
+    /// </summary>
+    /// <remarks>
+    /// If this is true, it will put a card panel in the middle of the screen
+    /// The card panel will be able to display up to 7 cards and will have a left/right button
+    /// </remarks>
     public abstract bool showCardPanel { get; }
 
     // This is the hook for the implementer to build their own UI elements.
+    /// <summary>
+    /// Hook for building this screen's UI elements.
+    /// </summary>
+    /// <param name="partialScreen"></param>
     public virtual void InitializeScreen(GameObject partialScreen)
     {
 
     }
 
+    /// <summary>
+    /// Objects for handling the text lines that appear in the card displayer when a card is selected/hovered over.
+    /// </summary>
     public SequentialPixelTextLines cardInfoLines;
 
+    /// <summary>
+    /// Object for handling the footer text lines.
+    /// </summary>
     public SequentialPixelTextLines challengeFooterLines;
 
+    /// <summary>
+    /// Object for storing the header text.
+    /// </summary>
     public ChallengeLevelText challengeHeaderDisplay;
 
+    /// <summary>
+    /// All cards currently displayed in the card displayer.
+    /// </summary>
     public List<PixelSelectableCard> cards;
 
+    /// <summary>
+    /// Object for the card panel.
+    /// </summary>
     public GameObject cardPanel;
 
+    /// <summary>
+    /// UI interactable for going to the previous page (if applicable).
+    /// </summary>
     public MainInputInteractable leftButton;
 
+    /// <summary>
+    /// UI interactable for going to the next page (if applicable).
+    /// </summary>
     public MainInputInteractable rightButton;
 
+    /// <summary>
+    /// UI interactble for continuing to the next screen..
+    /// </summary>
     public AscensionMenuInteractable continueButton;
 
+    /// <summary>
+    /// UI interactable for backing out of the current screen.
+    /// </summary>
     public AscensionMenuBackButton backButton;
 
+    /// <summary>
+    /// Text object for displaying the screen's title.
+    /// </summary>
     public PixelText screenTitle;
 
+    /// <summary>
+    /// Text object for displaying information without using the card displayer.
+    /// </summary>
     public PixelText secondaryInfoDisplayer;
+    /// <summary>
+    /// Object that handles transitions to and from this screen.
+    /// </summary>
 
     public AscensionMenuScreenTransition transitionController;
 
@@ -65,6 +122,12 @@ public abstract class AscensionRunSetupScreenBase : ManagedBehaviour
             GameObject.Destroy(obj);
     }
 
+    /// <summary>
+    /// Constructs this screen's paginator buttons. Used to transition to the previous and next screens.
+    /// </summary>
+    /// <param name="parent">The object the paginators will be parented to.</param>
+    /// <param name="upperPosition">If the paginator should be anchored to the top of the screen.</param>
+    /// <returns></returns>
     public static (AscensionMenuInteractable, AscensionMenuInteractable) BuildPaginators(Transform parent, bool upperPosition = false)
     {
         GameObject leftPseudoPrefab = AscensionMenuScreens.Instance.cardUnlockSummaryScreen.transform.Find("Unlocks/ScreenAnchor/PageLeftButton").gameObject;
@@ -120,6 +183,13 @@ public abstract class AscensionRunSetupScreenBase : ManagedBehaviour
         return (leftIcon.GetComponent<AscensionMenuInteractable>(), rightIcon.GetComponent<AscensionMenuInteractable>());
     }
 
+    /// <summary>
+    /// Constructs this screen and adds it to the game.
+    /// </summary>
+    /// <param name="screenType">The <see cref="AscensionRunSetupScreenBase"/> to build.</param>
+    /// <param name="previousScreen">The ID of the screen that comes before this screen.</param>
+    /// <param name="nextScreen">The ID of the screen that comes after this screen.</param>
+    /// <returns></returns>
     public static AscensionRunSetupScreenBase BuildScreen(Type screenType, AscensionMenuScreens.Screen previousScreen, AscensionMenuScreens.Screen nextScreen)
     {
         // Create the new screen
@@ -314,6 +384,11 @@ public abstract class AscensionRunSetupScreenBase : ManagedBehaviour
         }
     }
 
+    /// <summary>
+    /// Clears any message currently being displayed.
+    /// If <see cref="showCardDisplayer"/> is true, clears the message using <see cref="DisplayCardInfo(CardInfo, string, string, bool)"/>.
+    /// Otherwise, sets the <see cref="secondaryInfoDisplayer"/> to inactive.
+    /// </summary>
     public virtual void ClearMessage()
     {
         if (this.gameObject.activeSelf)
@@ -329,6 +404,12 @@ public abstract class AscensionRunSetupScreenBase : ManagedBehaviour
         }
     }
 
+    /// <summary>
+    /// Displays the given message.
+    /// If <see cref="showCardDisplayer"/> is true, displays the message using <see cref="DisplayCardInfo(CardInfo, string, string, bool)"/>.
+    /// Otherwise, uses the <see cref="secondaryInfoDisplayer"/> to display the message.
+    /// </summary>
+    /// <param name="message">String to show.</param>
     public virtual void DisplayMessage(string message)
     {
         if (this.showCardDisplayer)
@@ -342,22 +423,41 @@ public abstract class AscensionRunSetupScreenBase : ManagedBehaviour
         }
     }
 
+    /// <summary>
+    /// Hook for when the left button is clicked.
+    /// </summary>
+    /// <param name="button">Interactable corresponding to the left button.</param>
     public virtual void LeftButtonClicked(MainInputInteractable button)
     {
 
     }
 
+    /// <summary>
+    /// Hook for when the right button is clicked.
+    /// </summary>
+    /// <param name="button">Interactable corresponding to the right button.</param>
     public virtual void RightButtonClicked(MainInputInteractable button)
     {
 
     }
 
+    /// <summary>
+    /// Hook for when a card is moused over in the card displayer.
+    /// </summary>
+    /// <param name="card">The card that was moused over.</param>
+    /// <remarks>
+    /// If <see cref="showCardDisplayer"/> is true, will call <see cref="DisplayCardInfo(CardInfo, string, string, bool)"/> by default.
+    /// </remarks>
     public virtual void CardCursorEntered(PixelSelectableCard card)
     {
         if (this.showCardDisplayer)
             this.DisplayCardInfo(card.Info);
     }
 
+    /// <summary>
+    /// Hook for when a card is selected in the card panel displayer.
+    /// </summary>
+    /// <param name="card">The card that was selected.</param>
     public virtual void CardClicked(PixelSelectableCard card)
     {
 
@@ -367,6 +467,13 @@ public abstract class AscensionRunSetupScreenBase : ManagedBehaviour
 
     private static Vector2 BETWEEN_CARD_OFFSET = new Vector2(0.5f, 0f);
 
+    /// <summary>
+    /// Displays the given cards in the card displayer.
+    /// </summary>
+    /// <param name="cardsToDisplay">The <see cref="CardInfo"/>s to display.</param>
+    /// <remarks>
+    /// Only functions if <see cref="showCardDisplayer"/> is true.
+    /// </remarks>
     public void ShowCards(List<CardInfo> cardsToDisplay)
     {
         if (!this.showCardDisplayer)
@@ -388,9 +495,26 @@ public abstract class AscensionRunSetupScreenBase : ManagedBehaviour
         }
     }
 
+    /// <summary>
+    /// String comprised entirely of dashes.
+    /// Used for displaying the centre delimiters.
+    /// </summary>
     public const string CENTER_DASHES = "-------------------------------------------------------------------------------------------------------------------------------";
+    /// <summary>
+    /// String comprised entirely of dashes that covers the entire screen horizontal.
+    /// </summary>
     public const string FULL_DASHES = "---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------";
 
+    /// <summary>
+    /// Displays the given <see cref="CardInfo"/> information in the card displayer.
+    /// </summary>
+    /// <param name="info">The <see cref="CardInfo"/> to display.</param>
+    /// <param name="nameOverride">String to display instead of the default displayed name. Use null to use the default.</param>
+    /// <param name="descOverride">String to display instead of the default description. Leave null to use the default.</param>
+    /// <param name="immediate">If the text should be immediately updated or play a transition.</param>
+    /// <remarks>
+    /// Only functions if <see cref="showCardDisplayer"/> is true.
+    /// </remarks>
     public void DisplayCardInfo(CardInfo info, string nameOverride = null, string descOverride = null, bool immediate = false)
     {
         if (!showCardDisplayer)
@@ -408,6 +532,13 @@ public abstract class AscensionRunSetupScreenBase : ManagedBehaviour
         }, immediate);
     }
 
+    /// <summary>
+    /// Clears the displayed <see cref="CardInfo"/> information in the card displayer.
+    /// </summary>
+    /// <param name="immediate">If the text should be immediately updated or play a transition.</param>
+    /// <remarks>
+    /// Only functions if <see cref="showCardDisplayer"/> is true.
+    /// </remarks>
     public void ClearCardInfo(bool immediate = true)
     {
         if (!showCardDisplayer)
@@ -421,6 +552,12 @@ public abstract class AscensionRunSetupScreenBase : ManagedBehaviour
         }, immediate);
     }
 
+    /// <summary>
+    /// Displays the given information in the same format as challenges.
+    /// </summary>
+    /// <param name="message">The message to display on line 1.</param>
+    /// <param name="points">The points amount to be displayed on line 2.</param>
+    /// <param name="immediate">If a transition should play before displaying the challenge.</param>
     public void DisplayChallengeInfo(string message, int points, bool immediate = false)
     {
         string lineOne = Localization.Translate(message);
@@ -468,6 +605,20 @@ public abstract class AscensionRunSetupScreenBase : ManagedBehaviour
         challengeHeaderDisplay.UpdateText();
     }
 
+    /// <summary>
+    /// Displays information on the given challenge.
+    /// </summary>
+    /// <param name="challenge">The challenge to display.</param>
+    /// <param name="immediate">If a transition should play before displaying the challenge.</param>
+    public void DisplayChallengeInfo(AscensionChallenge challenge, bool immediate = false) {
+        AscensionChallengeInfo info = AscensionChallengesUtil.GetInfo(challenge);
+        int points = info.pointValue * (AscensionSaveData.Data.ChallengeIsActive(challenge) ? 1 : -1);
+        DisplayChallengeInfo(info.title, points, immediate);
+    }
+
+    /// <summary>
+    /// Corrects the viewport cameras in this screen's children's components.
+    /// </summary>
     public override void OnEnable()
     {
         // Set all the viewport camera stuff
@@ -475,12 +626,5 @@ public abstract class AscensionRunSetupScreenBase : ManagedBehaviour
             vrp.viewportCam = Camera.main;
 
         base.OnEnable();
-    }
-
-    public void DisplayChallengeInfo(AscensionChallenge challenge, bool immediate = false)
-    {
-        AscensionChallengeInfo info = AscensionChallengesUtil.GetInfo(challenge);
-        int points = info.pointValue * (AscensionSaveData.Data.ChallengeIsActive(challenge) ? 1 : -1);
-        DisplayChallengeInfo(info.title, points, immediate);
     }
 }

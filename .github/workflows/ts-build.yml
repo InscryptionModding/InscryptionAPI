@@ -1,0 +1,34 @@
+
+name: TS-Build
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    name: Run TS-Build
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup .NET SDK
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 10.0.x
+
+      - name: Run TS-Build Script
+        shell: cmd
+        run: call InscryptionAPI\TS-Build.bat
+
+      - name: Send Artifacts to GitHub Workflow for Later Use.
+        uses: actions/upload-artifact@v4
+        with:
+          name: InscryptionAPI-Thunderstore-${{ github.run_number }}
+          path: InscryptionAPI/GITHUB RELEASE/NET/*.zip
+          if-no-files-found: error
+          retention-days: 30

@@ -8,11 +8,22 @@ using System.Runtime.CompilerServices;
 
 namespace InscryptionAPI.Guid;
 
+/// <summary>
+/// This is the Manager for Custom Type's related to our GUID System.
+/// </summary>
 [HarmonyPatch]
 public static class TypeManager
 {
+    /// <summary>
+    /// This is an Internal Dictionary of Type Related Cache.
+    /// </summary>
     private static readonly Dictionary<string, Type> TypeCache = new();
 
+    /// <summary>
+    /// Use this to add a custom type to the Cache, if another type is passed with the same key, the old value is overwritten.
+    /// </summary>
+    /// <param name="key">The Key associated with the Custom Type.</param>
+    /// <param name="value">The Custom Type the Key should be associated with.</param>
     internal static void Add(string key, Type value)
     {
         if (TypeCache.ContainsKey(key))
@@ -26,6 +37,11 @@ public static class TypeManager
         TypeCache.Add(key, value);
     }
 
+    /// <summary>
+    /// Use this exclusively for replacing a Custom Type that is in the Cache.
+    /// </summary>
+    /// <param name="key">The Key you want to replace the Custom Type of.</param>
+    /// <param name="value">The New Type acting as the Custom Type's replacement.</param>
     internal static void Replace(string key, Type value)
     {
         if (TypeCache.ContainsKey(key))
@@ -34,8 +50,16 @@ public static class TypeManager
         Add(key, value);
     }
 
+    /// <summary>
+    /// This is a Internal Dictionary of ModId's passed in by other mods.
+    /// </summary>
     private static readonly Dictionary<string, string> ModIds = new();
 
+    /// <summary>
+    /// This is a function that gets the Mod ID of a Passed Assembly.
+    /// </summary>
+    /// <param name="assembly">The Assembly to get the Mod ID of.</param>
+    /// <returns>The Mod ID of the requested Assembly.</returns>
     private static string GetModIdFromAssembly(Assembly assembly)
     {
         if (ModIds.ContainsKey(assembly.FullName))
@@ -57,6 +81,11 @@ public static class TypeManager
         return default;
     }
 
+    /// <summary>
+    /// Gets the Mod ID from an Assembly Calling the API.
+    /// </summary>
+    /// <param name="callingAssembly">The Assembly Calling the API.</param>
+    /// <returns>The Mod ID of the Assembly Calling the API.</returns>
     public static string GetModIdFromCallstack(Assembly callingAssembly)
     {
         string cacheVal = GetModIdFromAssembly(callingAssembly);
@@ -74,11 +103,25 @@ public static class TypeManager
         return default;
     }
 
+    /// <summary>
+    /// Used to get the Original Type from a Namespace and a known Type Name.
+    /// </summary>
+    /// <param name="nameSpace">The Namespace associated with the Type.</param>
+    /// <param name="typeName">The Type's Name.</param>
+    /// <returns>The Type that was originally used by the given Namespace with that Type's Name.</returns>
+    /// <exception cref="NotImplementedException">If this is thrown The Patch was unsuccessful.</exception>
     [HarmonyReversePatch(HarmonyReversePatchType.Original)]
     [HarmonyPatch(typeof(CustomType), nameof(CustomType.GetType), new Type[] { typeof(string), typeof(string) })]
     [MethodImpl(MethodImplOptions.NoInlining)]
     public static Type OriginalGetType(string nameSpace, string typeName) { throw new NotImplementedException(); }
 
+    /// <summary>
+    /// This Patch implements our custom version of <see cref="OriginalGetType"/>, for Getting our Custom Types.
+    /// </summary>
+    /// <param name="nameSpace">The Namespace associated with the Type.</param>
+    /// <param name="typeName">The Type's Name.</param>
+    /// <param name="__result">The Return Value of the Type.</param>
+    /// <returns>The Custom Type associated with the Namespace and given Name for the Type.</returns>
     [HarmonyPatch(typeof(CustomType), nameof(CustomType.GetType), new Type[] { typeof(string), typeof(string) })]
     [HarmonyPrefix]
     private static bool GetCustomType(string nameSpace, string typeName, ref Type __result)

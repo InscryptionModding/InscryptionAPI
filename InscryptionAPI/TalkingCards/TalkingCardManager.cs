@@ -6,17 +6,22 @@ using UnityEngine;
 #nullable enable
 namespace InscryptionAPI.TalkingCards;
 
-public static class TalkingCardManager
-{
+/// <summary>
+/// Manager clas for adding talking cards through the API.
+/// </summary>
+public static class TalkingCardManager {
     // Add a talking card created through this API.
     // I'm using an interface so that it can all be kept in the same class. c:
 
+    /// <summary>
+    /// Sprite representing an empty card portrait.
+    /// </summary>
     public static Sprite EmptyPortrait => GeneratePortrait.EmptyPortrait;
 
     /// <summary>
     /// Creates a talking card through this API.
     /// </summary>
-    /// <typeparam name="T">A type that implements the ITalkingCard interface.</typeparam>
+    /// <typeparam name="T">A type that implements the <see cref="ITalkingCard"/> interface.</typeparam>
     public static void New<T>() where T : ITalkingCard, new()
     {
         ITalkingCard x = new T();

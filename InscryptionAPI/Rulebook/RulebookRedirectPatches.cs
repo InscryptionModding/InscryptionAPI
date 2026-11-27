@@ -19,6 +19,9 @@ namespace InscryptionAPI.RuleBook;
 
 // we want modders to be able to set multiple redirects that can go to different types of pages
 // eg: abilities, stat icons, boons, items
+/// <summary>
+/// Patches to make rulebook hyperlinks/redirects work.
+/// </summary>
 [HarmonyPatch]
 public static class RulebookRedirectPatches
 {
@@ -48,6 +51,9 @@ public static class RulebookRedirectPatches
         rulebookShowFlipIndex = -1;
     }
 
+    /// <summary>
+    /// The current page index, accounting for the fact <see cref="RulebookPageFlipper.ShowFlipToPage(int, float)"/> alters the index by 3.
+    /// </summary>
     public static int rulebookShowFlipIndex = -1;
 
     [HarmonyPrefix, HarmonyPatch(typeof(RulebookPageFlipper), nameof(RulebookPageFlipper.RenderPages))]

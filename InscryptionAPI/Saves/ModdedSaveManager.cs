@@ -3,6 +3,9 @@ using HarmonyLib;
 
 namespace InscryptionAPI.Saves;
 
+/// <summary>
+/// Manager class for <see cref="ModdedSaveData"/>.
+/// </summary>
 [HarmonyPatch]
 public static class ModdedSaveManager
 {

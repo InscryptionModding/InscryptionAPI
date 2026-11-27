@@ -3,6 +3,7 @@ using UnityEngine;
 
 namespace APIPlugin;
 
+#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
 [Obsolete("Use AbilityManager and extension methods instead", true)]
 public class AbilityInfoUtils
 {
@@ -20,3 +21,4 @@ public class AbilityInfoUtils
         return info;
     }
 }
+#pragma warning restore CS1591 // Missing XML comment for publicly visible type or member

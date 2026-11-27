@@ -8,7 +8,9 @@ using UnityEngine;
 
 namespace InscryptionAPI.Triggers;
 
-// Patches to DoCombatPhase that add negative damage support and modifying attack slots support
+/// <summary>
+/// Patches to <see cref="CombatPhaseManager.DoCombatPhase"/> that add negative damage support and modifying attack slots support.
+/// </summary>
 [HarmonyPatch]
 public static class DoCombatPhasePatches
 {
@@ -19,6 +21,13 @@ public static class DoCombatPhasePatches
     private const string name_CombatCurrent = "System.Object <>2__current";
 
     // make this public for modders wanting to modify it
+    /// <summary>
+    /// Modifies how direct damage is calculated to allow for negative damage values to work correctly.
+    /// </summary>
+    /// <param name="__instance"><see cref="CombatPhaseManager"/> instance.</param>
+    /// <param name="playerIsAttacker">If the player is attacking.</param>
+    /// <param name="specialSequencer">The <see cref="SpecialBattleSequencer"/> for the opponent, if any.</param>
+    /// <param name="attackedWithSquirrel">If the player attacked with a Squirrel card.</param>
     public static IEnumerator NegativeDamageSupport(CombatPhaseManager __instance, bool playerIsAttacker, SpecialBattleSequencer specialSequencer, bool attackedWithSquirrel)
     {
         // we want to implement logic for if damage is less than 0 (damage dealt to self)
@@ -63,6 +72,11 @@ public static class DoCombatPhasePatches
         }
     }
 
+    /// <summary>
+    /// Inserts call to custom trigger <see cref="IGetAttackingSlots"/>.
+    /// </summary>
+    /// <param name="playerIsAttacker">If the player is attacking.</param>
+    /// <returns>List of slots whose occupying cards will be attacking this turn.</returns>
     public static List<CardSlot> ModifyAttackingSlots(bool playerIsAttacker)
     {
         List<CardSlot> originalSlots = BoardManager.Instance.GetSlotsCopy(playerIsAttacker);

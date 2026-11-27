@@ -4,6 +4,7 @@ using UnityEngine;
 
 namespace APIPlugin;
 
+#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
 [Obsolete("Use CardManager and CardInfo extension methods", true)]
 public class TailIdentifier
 {
@@ -58,3 +59,4 @@ public class TailIdentifier
         return name;
     }
 }
+#pragma warning restore CS1591 // Missing XML comment for publicly visible type or member

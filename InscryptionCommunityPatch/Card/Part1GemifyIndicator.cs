@@ -8,12 +8,22 @@ using System.Text;
 using UnityEngine;
 
 namespace InscryptionCommunityPatch.Card;
+
+/// <summary>
+/// Patches in the Gemify Renderer into Act 1 for the ability to use Gemification in Act 1 visually.
+/// </summary>
 [HarmonyPatch]
 public class Part1GemifyIndicator {
-    // 0 = base gemify
-    // 1 = power
-    // 2 = health
-    // 3 = cost
+    /// <summary>
+    /// An <see cref="Renderer"/> array representing the Gemification Renderers. They are ordered as follows:
+    /// <list type="table">
+    ///     <listheader>Order of the Gemification Renderers:</listheader>
+    ///     <item><term>0</term><description>Base Gemification</description></item>
+    ///     <item><term>1</term><description>Power Gemification</description></item>
+    ///     <item><term>2</term><description>Health Gemification</description></item>
+    ///     <item><term>3</term><description>Cost Gemification</description></item>
+    /// </list>
+    /// </summary>
     public static Renderer[] GemifyRenderers = new Renderer[4];
 
     [HarmonyPostfix, HarmonyPatch(typeof(CardDisplayer3D), nameof(CardDisplayer3D.DisplayInfo))]
@@ -59,6 +69,10 @@ public class Part1GemifyIndicator {
         }
     }
 
+    /// <summary>
+    /// Handles adding an Act 1 Gemification Visual to a card.
+    /// </summary>
+    /// <param name="cardRenderCamera">The <see cref="CardRenderCamera"/> associated with the card.</param>
     public static void AddAct1GemifyVisuals(CardRenderCamera cardRenderCamera) {
         CardDisplayer3D dis = cardRenderCamera.cardDisplayer as CardDisplayer3D;
 

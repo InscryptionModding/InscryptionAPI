@@ -14,20 +14,52 @@ namespace InscryptionAPI.RuleBook;
 /// </summary>
 public class RuleBookRedirectManager : Singleton<RuleBookRedirectManager>
 {
+    /// <summary>
+    /// All created <see cref="PageTextInteractable"/> objects.
+    /// </summary>
     public readonly List<GameObject> createdInteractableObjects = new();
+    /// <summary>
+    /// All currently active <see cref="PageTextInteractable"/> objects.
+    /// </summary>
     public readonly List<GameObject> currentActiveInteractables = new();
+    /// <summary>
+    /// Index for the current rulebook page that is open.
+    /// </summary>
     public int currentActivePageIndex = -1;
 
+    /// <summary>
+    /// xyz-coordinate for the top-left corner of the page object.
+    /// </summary>
     public Vector3 currentPageTopLeft;
+    /// <summary>
+    /// xyz-coordinate of the top-left corner of where the description text starts on the page object.
+    /// </summary>
     public Vector3 descriptionTopLeft;
+    /// <summary>
+    /// x-y values for the width and length of the current page object.
+    /// </summary>
     public float[] currentPageLengths;
+    /// <summary>
+    /// x-y values for the width and length of the description text's bounding box.
+    /// </summary>
     public float[] descriptionLengths;
 
     //public float currentPageRotation = 0f;
 
+    /// <summary>
+    /// <see cref="Camera"/> that renders the rulebook object. Retrieved from the controller's rig parent.
+    /// </summary>
     public Camera RuleBookCamera;
+    /// <summary>
+    /// <see cref="Camera"/> that renders UI elements.
+    /// </summary>
     public Camera PixelCamera;
 
+    /// <summary>
+    /// <see cref="Transform"/> for the current top page object.<br/>
+    /// For Acts 1, Magnificus, and Grimora, this will be the object for <see cref="RulebookPageFlipper.topPage"/>.<br/>
+    /// For Act 1, this will be the object of the tablet itself (since it has no pages).
+    /// </summary>
     public Transform currentTopPage;
 
     private void Start()
@@ -36,12 +68,24 @@ public class RuleBookRedirectManager : Singleton<RuleBookRedirectManager>
         PixelCamera = ViewManager.Instance.pixelCamera;
     }
 
+    /// <summary>
+    /// Clears the list of active interactables, updates the list of created interactbles to remove destroyed objects, then deactivates all created interactables.
+    /// </summary>
     public void ClearActiveInteractables()
     {
         currentActiveInteractables.Clear();
         createdInteractableObjects.RemoveAll(x => x == null);
         createdInteractableObjects.ForEach(x => x.SetActive(false));
     }
+
+    /// <summary>
+    /// Updates the list of active interactables for the current opened page.<br/>
+    /// Creates new interactables if there aren't enough for the current page.
+    /// Attempts to reuse preexisting interactables to avoid creating excess objects.
+    /// </summary>
+    /// <param name="description">The object for the description text.</param>
+    /// <param name="currentPageObj">The object for the current page object.</param>
+    /// <param name="redirects">List of rulebook redirects for the current page.</param>
     public void UpdateActiveInteractables(TextMeshPro description, GameObject currentPageObj, Dictionary<string, RuleBookManager.RedirectInfo> redirects)
     {
         //InscryptionAPIPlugin.Logger.LogDebug($"[UpdateActiveInteractables]");

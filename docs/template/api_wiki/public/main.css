@@ -1,0 +1,404 @@
+@font-face {
+    font-family: 'DPComic';
+    src: url('fonts/dpcomic.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+:root {
+    --page-gutter: clamp(1rem, 4vw, 5rem);
+
+    --document-font: 'DPComic', system-ui, sans-serif;
+    --code-font: 'DPComic', system-ui, sans-serif;
+
+    --bs-font-sans-serif: var(--document-font);
+    --bs-body-font-family: var(--document-font);
+    --bs-font-monospace: var(--code-font);
+
+    --document-font-size: 20px;
+    --code-font-size: 18px;
+
+    --document-line-height: 1.5;
+    --code-line-height: 1.4;
+
+    --h1-font-size: 3.25em;
+    --h2-font-size: 2.25em;
+    --h3-font-size: 1.70em;
+    --h4-font-size: 1.50em;
+    --h5-font-size: 1.20em;
+    --h6-font-size: 1.00em;
+    --heading-line-height: 1.2;
+}
+
+html[data-document-font="dpcomic"] {
+    --document-font: 'DPComic', system-ui, sans-serif;
+}
+
+html[data-document-font="comic-sans"] {
+    --document-font: 'Comic Sans MS', 'Comic Sans', cursive;
+}
+
+html[data-document-font="sans-serif"] {
+    --document-font: sans-serif;
+}
+
+html[data-document-font="monospace"] {
+    --document-font: monospace;
+}
+
+html[data-document-font="system"] {
+    --document-font: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+html[data-code-font="dpcomic"] {
+    --code-font: 'DPComic', system-ui, sans-serif;
+}
+
+html[data-code-font="comic-sans"] {
+    --code-font: 'Comic Sans MS', 'Comic Sans', cursive;
+}
+
+html[data-code-font="sans-serif"] {
+    --code-font: sans-serif;
+}
+
+html[data-code-font="monospace"] {
+    --code-font: monospace;
+}
+
+html[data-code-font="system"] {
+    --code-font: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+body {
+    font-family: var(--document-font);
+}
+
+.font-settings-menu {
+    display: flex;
+    align-items: center;
+}
+
+.font-settings-menu > button {
+    font-size: 1.25rem;
+    padding: 0.5rem 0.75rem;
+}
+
+.font-settings-menu .dropdown-menu {
+    min-width: 18rem;
+}
+
+.font-settings-menu .dropdown-header {
+    padding-left: 0;
+    font-size: 1.5rem;
+}
+
+.font-settings-menu .form-label {
+    margin-bottom: 0.35rem;
+    font-size: 1.25rem;
+}
+
+.font-settings-menu input,
+.font-settings-menu select {
+    width: 100%;
+}
+
+.font-settings-menu [hidden] {
+    display: none !important;
+}
+
+#reset-settings {
+    font-size: 1.25rem;
+    font-weight: normal;
+}
+
+* {
+    border-width: 4px !important;
+}
+
+b, strong {
+    font-weight: normal;
+}
+
+:not(pre) > code {
+    background-color: var(--bs-tertiary-bg, #e9ecef);
+    padding: 0.15em 0.35em;
+    border-radius: 4px;
+}
+
+.container, .container-fluid, .container-xxl {
+    width: 100%;
+    max-width: 100%;
+    padding-right: var(--page-gutter);
+    padding-left: var(--page-gutter);
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.container {
+    max-width: 100%;
+}
+
+body > header, body[data-layout="landing"] > header {
+    min-height: 90px;
+}
+
+body > footer, body[data-layout="landing"] > footer {
+    min-height: 90px;
+    display: flex;
+    align-items: stretch;
+}
+
+.navbar {
+    --bs-navbar-brand-margin-end: 2.5rem;
+    --bs-navbar-brand-font-size: 1.5rem;
+}
+
+.navbar-toggle-label {
+    font-size: 0.9rem;
+    white-space: nowrap;
+}
+
+#navbar {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+#navbar .search {
+    flex: 1 1 12rem;
+    min-width: 0;
+}
+
+#navbar .navbar-nav {
+    flex: 0 0 auto;
+}
+
+#navbar form.icons {
+    display: flex;
+    align-items: center;
+    flex: 0 0 auto;
+    gap: 0.25rem;
+    margin: 0;
+}
+
+#navbar form.icons .dropdown {
+    display: flex;
+    align-items: center;
+}
+
+#navbar .dropdown-menu {
+    max-height: calc(100dvh - 6rem);
+    overflow-y: auto;
+    overscroll-behavior: contain;
+}
+
+@media (max-width: 767.98px) {
+    #navpanel,
+    #navbar {
+        overflow: visible;
+    }
+
+    #navbar {
+        width: 100%;
+        align-items: stretch;
+        gap: 0.75rem;
+        padding: 0.75rem 0;
+    }
+
+    #navbar .search {
+        flex: 1 1 100%;
+        width: 100%;
+    }
+
+    #navbar form.icons {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        width: 100%;
+        gap: 0.25rem;
+    }
+
+    #navbar form.icons > .dropdown {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        width: auto;
+        flex: 0 0 auto;
+    }
+
+    #navbar form.icons > .dropdown > .dropdown-menu {
+        position: static !important;
+        transform: none !important;
+        inset: auto !important;
+        float: none;
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
+        margin: 0.5rem 0 0;
+        border-radius: var(--bs-border-radius);
+    }
+
+    #navbar form.icons > .dropdown > .dropdown-menu.show {
+        display: block;
+    }
+}
+
+#logo {
+    padding-right: 1.5rem;
+}
+
+.content, .facts {
+    font-size: var(--document-font-size) !important;
+    line-height: var(--document-line-height);
+}
+
+.content h1,
+.content .h1 {
+    font-size: var(--h1-font-size) !important;
+}
+
+.content h2,
+.content .h2 {
+    font-size: var(--h2-font-size) !important;
+}
+
+.content h3,
+.content .h3 {
+    font-size: var(--h3-font-size) !important;
+}
+
+.content h4,
+.content .h4 {
+    font-size: var(--h4-font-size) !important;
+}
+
+.content h5,
+.content .h5 {
+    font-size: var(--h5-font-size) !important;
+}
+
+.content h6,
+.content .h6 {
+    font-size: var(--h6-font-size) !important;
+}
+
+.content h1,
+.content .h1,
+.content h2,
+.content .h2,
+.content h3,
+.content .h3,
+.content h4,
+.content .h4,
+.content h5,
+.content .h5,
+.content h6,
+.content .h6 {
+    line-height: var(--heading-line-height);
+}
+
+.toc ul {
+    font-size: var(--document-font-size) !important;
+    line-height: var(--document-line-height);
+}
+
+.affix {
+    font-size: var(--document-font-size);
+    line-height: var(--document-line-height);
+}
+
+code, kbd, samp, pre, .hljs, .facts code {
+    font-family: var(--code-font);
+    font-size: var(--code-font-size) !important;
+    line-height: var(--code-line-height);
+}
+
+body[data-yaml-mime="ManagedReference"] article h2.section,
+body[data-yaml-mime="ApiPage"] article h2.section {
+    margin-top: 1rem;
+}
+
+.inheritance {
+    margin-bottom: 1rem;
+}
+
+.inheritance h5 {
+    margin-bottom: 0.35rem;
+}
+
+.inheritance-tree {
+    border-top: 1px solid currentColor;
+    padding-top: 0.35rem;
+}
+
+.inheritance-level {
+    line-height: var(--document-line-height);
+    padding-left: calc(var(--inheritance-level, 0) * 1.25rem);
+}
+
+.inheritance-level::before {
+    content: "↳ ";
+    opacity: 0.75;
+}
+
+.api-parameters, .api-returns, .api-type-parameters, .api-exceptions, .api-fields {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 1rem;
+}
+
+.api-parameters th, .api-returns th, .api-type-parameters th, .api-exceptions th, .api-fields th,
+.api-parameters td, .api-returns td, .api-type-parameters td, .api-exceptions td, .api-fields td {
+    padding: 0.5rem 0.75rem;
+    border: 1px solid var(--bs-border-color, #444);
+    text-align: left;
+}
+
+html.api-documentation h1,
+html.api-documentation .h1,
+html.community-documentation h1,
+html.community-documentation .h1,
+html.apispec-documentation h1,
+html.apispec-documentation .h1 {
+    border-bottom: 1px solid currentColor;
+    padding-bottom: 0.35rem;
+}
+
+html.api-documentation h3,
+html.api-documentation .h3,
+html.community-documentation h3,
+html.community-documentation .h3,
+html.apispec-documentation h3,
+html.apispec-documentation .h3 {
+    border-bottom: 1px solid currentColor;
+    padding-bottom: 0.35rem;
+}
+
+a.active {
+    font-style: italic;
+    text-decoration: underline;
+}
+
+.typelist details {
+    margin-bottom: 1rem;
+}
+
+.typelist summary {
+    cursor: pointer;
+    padding: 0.5rem 0;
+    user-select: none;
+}
+
+.typelist summary:hover {
+    text-decoration: underline;
+}
+
+.typelist-content {
+    padding: 0.5rem 0 0.5rem 1.25rem;
+}
+
+.typelist-content > div {
+    padding: 0.2rem 0;
+}

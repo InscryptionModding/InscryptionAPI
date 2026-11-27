@@ -6,6 +6,9 @@ using System.Reflection.Emit;
 
 namespace InscryptionAPI.PixelCard;
 
+/// <summary>
+/// Manager class for defining and adding custom GBC card packs.
+/// </summary>
 [HarmonyPatch]
 public static class GBCPackManager
 {

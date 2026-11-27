@@ -4,7 +4,9 @@ using System.Reflection.Emit;
 
 namespace InscryptionCommunityPatch.Sequencers;
 
-// 'fixes' the pack rat card not being rare
+/// <summary>
+/// Corrects the Pack Rat Card to be a Rare Card.
+/// </summary>
 [HarmonyPatch]
 internal class PackRatNodeBackgroundFix
 {

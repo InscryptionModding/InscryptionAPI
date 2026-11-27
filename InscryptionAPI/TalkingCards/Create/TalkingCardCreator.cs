@@ -10,6 +10,9 @@ using UnityEngine;
 
 namespace InscryptionAPI.TalkingCards.Create;
 
+/// <summary>
+/// Class for creating talking cards' animated portraits and special abilities.
+/// </summary>
 public static class TalkingCardCreator
 {
     internal static List<string> AllDialogueAdded => DialogueDummy.AllDialogueAdded;
@@ -115,6 +118,10 @@ public static class TalkingCardCreator
     #endregion
 
     #region Dialogue
+    /// <summary>
+    /// Adds the dialogue event ID to the cache of <see cref="AllDialogueAdded"/>.
+    /// </summary>
+    /// <param name="id"></param>
     public static void AddToDialogueCache(string? id)
     {
         if (id == null) return;

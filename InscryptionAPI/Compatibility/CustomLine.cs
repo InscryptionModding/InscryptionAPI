@@ -1,8 +1,7 @@
 using DiskCardGame;
 
 namespace InscryptionAPI.Helpers;
-
-
+#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
 [Obsolete("Use DialogueManager.GenerateEvent or InscryptionAPI.Dialogue.CustomLine instead.")]
 public struct CustomLine
 {
@@ -45,3 +44,4 @@ public struct CustomLine
     public StoryEvent storyCondition = StoryEvent.BasicTutorialCompleted;
     public bool storyConditionMustBeMet = default;
 }
+#pragma warning restore CS1591 // Missing XML comment for publicly visible type or member

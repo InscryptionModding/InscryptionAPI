@@ -2,11 +2,23 @@ using DiskCardGame;
 
 namespace InscryptionAPI.RuleBook;
 
+/// <summary>
+/// Class for interacting with hyperlinked text in the rulebook.
+/// </summary>
 public class PageTextInteractable : AlternateInputInteractable
 {
+    /// <summary>
+    /// The icon of the mouse cursor when hovering of this object.
+    /// </summary>
     public override CursorType CursorType => CursorType.Inspect;
 
+    /// <summary>
+    /// The page type and section this object will redirect to when clicked on.
+    /// </summary>
     public PageRangeType redirectType;
+    /// <summary>
+    /// The ID of the page this object will redirect to.
+    /// </summary>
     public string redirectId;
 
     /*public Vector3 relativeToRulebookPosition;
@@ -35,12 +47,22 @@ public class PageTextInteractable : AlternateInputInteractable
         y = rotatedY + cy;
     }*/
 
+    /// <summary>
+    /// Sets the data for this interactable needed for it to work.
+    /// </summary>
+    /// <param name="rangeType"> The page type and section this object will redirect to when clicked on.</param>
+    /// <param name="pageId">The ID of the page this object will redirect to.</param>
     public void SetRedirect(PageRangeType rangeType, string pageId)
     {
         redirectType = rangeType;
         redirectId = pageId;
     }
 
+    /// <summary>
+    /// Logic for when this object is clicked on with the alternate select key (default right-click).
+    /// <br/>
+    /// Locates and then flips to the page defined by <see cref="redirectId"/>.
+    /// </summary>
     public override void OnAlternateSelectStarted()
     {
         RuleBookController.Instance.SetShown(true, redirectType != PageRangeType.Boons);

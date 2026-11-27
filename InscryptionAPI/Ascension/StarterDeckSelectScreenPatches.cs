@@ -8,7 +8,7 @@ using UnityEngine;
 namespace InscryptionAPI.Ascension;
 
 [HarmonyPatch]
-internal static class StarterDeckSelectscreenPatches
+internal static class StarterDeckSelectScreenPatches
 {
     [HarmonyPatch(typeof(AscensionChooseStarterDeckScreen), "Start")]
     [HarmonyPostfix]

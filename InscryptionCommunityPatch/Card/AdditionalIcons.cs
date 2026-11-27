@@ -5,8 +5,11 @@ using UnityEngine;
 
 namespace InscryptionCommunityPatch.Card;
 
+/// <summary>
+/// Modifies how cards are rendered so up to 8 sigils can be displayed on a card.
+/// </summary>
 [HarmonyPatch]
-internal class RenderAdditionalSigils // Modifies how cards are rendered so up to 8 sigils can be displayed on a card
+internal class RenderAdditionalSigils
 {
     private static Vector3 LocalScaleBase3D => SaveManager.SaveFile.IsPart1 ? new(0.2175f, 0.145f, 1f) : new(0.3f, 0.3f, 0.75f);
 
@@ -19,6 +22,7 @@ internal class RenderAdditionalSigils // Modifies how cards are rendered so up t
 
         return newIconGroup;
     }
+    
     private static List<Transform> NewIcons(GameObject newIconGroup, int slotNum, float act1ScaleMult = 1f)
     {
         List<Transform> icons = new();
@@ -91,6 +95,7 @@ internal class RenderAdditionalSigils // Modifies how cards are rendered so up t
         icons[2].localPosition = new Vector3(-0.12f, -0.077f, 0f);
         icons[3].localPosition = new Vector3(0.12f, -0.077f, 0f);
     }
+
     private static void AddQuintupleIconSlotToCard(CardAbilityIcons controller, Transform template)
     {
         GameObject iconGroup5 = NewIconGroup(controller, template, 5);
@@ -114,6 +119,7 @@ internal class RenderAdditionalSigils // Modifies how cards are rendered so up t
             icons[4].localPosition = new Vector3(0f, -0.125f, 0f);
         }
     }
+
     private static void AddSextupleIconSlotToCard(CardAbilityIcons controller, Transform template)
     {
         GameObject iconGroup6 = NewIconGroup(controller, template, 6);
@@ -132,6 +138,7 @@ internal class RenderAdditionalSigils // Modifies how cards are rendered so up t
             icons[5].localPosition = new Vector3(0.14f, -0.125f, 0f);
         }
     }
+
     private static void AddSeptupleIconSlotToCard(CardAbilityIcons controller, Transform template)
     {
         GameObject iconGroup7 = NewIconGroup(controller, template, 7);
@@ -155,6 +162,7 @@ internal class RenderAdditionalSigils // Modifies how cards are rendered so up t
             icons[6].localPosition = new Vector3(0.28f, -0.125f, 0f);
         }
     }
+
     private static void AddOctupleIconSlotToCard(CardAbilityIcons controller, Transform template)
     {
         GameObject iconGroup8 = NewIconGroup(controller, template, 8);
@@ -217,6 +225,7 @@ internal class RenderAdditionalSigils // Modifies how cards are rendered so up t
 
         return newIconGroup;
     }
+    
     private static List<Transform> NewPixelIcons(GameObject newIconGroup, string newIconName, float scaleMult = 1f)
     {
         List<Transform> icons = new();
@@ -251,6 +260,7 @@ internal class RenderAdditionalSigils // Modifies how cards are rendered so up t
         icons[1].localPosition = new Vector3(0f, 0f, 0f);
         icons[2].localPosition = new Vector3(0.12f, 0f, 0f);
     }
+    
     private static void AddQuadruplePixelIcon(PixelCardAbilityIcons controller, Transform pixelParent)
     {
         GameObject pixelIconGroup4 = NewPixelIconGroup(controller, pixelParent, 4);
@@ -265,6 +275,7 @@ internal class RenderAdditionalSigils // Modifies how cards are rendered so up t
         icons[2].localPosition = new Vector3(-0.08f, -0.06f, 0f);
         icons[3].localPosition = new Vector3(0.07f, -0.06f, 0f);
     }
+    
     private static void AddQuintuplePixelIcon(PixelCardAbilityIcons controller, Transform pixelParent)
     {
         GameObject pixelIconGroup5 = NewPixelIconGroup(controller, pixelParent, 5);
@@ -281,6 +292,7 @@ internal class RenderAdditionalSigils // Modifies how cards are rendered so up t
         icons[3].localPosition = new Vector3(-0.08f, -0.06f, 0f);
         icons[4].localPosition = new Vector3(0.07f, -0.06f, 0f);
     }
+    
     private static void AddSextuplePixelIcon(PixelCardAbilityIcons controller, Transform pixelParent)
     {
         GameObject pixelIconGroup6 = NewPixelIconGroup(controller, pixelParent, 6);
@@ -293,6 +305,7 @@ internal class RenderAdditionalSigils // Modifies how cards are rendered so up t
         icons[4].localPosition = new Vector3(0f, -0.04f, 0f);
         icons[5].localPosition = new Vector3(0.12f, -0.04f, 0f);
     }
+    
     private static void AddSeptuplePixelIcon(PixelCardAbilityIcons controller, Transform pixelParent)
     {
         GameObject pixelIconGroup7 = NewPixelIconGroup(controller, pixelParent, 7);
@@ -313,6 +326,7 @@ internal class RenderAdditionalSigils // Modifies how cards are rendered so up t
         icons[5].localPosition = new Vector3(0f, -0.04f, 0f);
         icons[6].localPosition = new Vector3(0.08f, -0.04f, 0f);
     }
+    
     private static void AddOctuplePixelIcon(PixelCardAbilityIcons controller, Transform pixelParent)
     {
         GameObject pixelIconGroup8 = NewPixelIconGroup(controller, pixelParent, 8);

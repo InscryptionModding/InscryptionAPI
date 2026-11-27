@@ -7,6 +7,9 @@ using UnityEngine;
 
 namespace InscryptionCommunityPatch.Card;
 
+/// <summary>
+/// Adds Handling for Stacking Abilities of the same type.
+/// </summary>
 [HarmonyPatch]
 public static class StackAbilityIcons
 {
@@ -25,6 +28,7 @@ public static class StackAbilityIcons
         TextureHelper.GetImageAsTexture("Stack_8.png", typeof(StackAbilityIcons).Assembly),
         TextureHelper.GetImageAsTexture("Stack_9.png", typeof(StackAbilityIcons).Assembly)
     };
+    
     private static readonly Texture2D[] MEDIUM_NUMBER_TEXTURES = new Texture2D[]
     {
         TextureHelper.GetImageAsTexture("Stack_0_med.png", typeof(StackAbilityIcons).Assembly),
@@ -38,6 +42,7 @@ public static class StackAbilityIcons
         TextureHelper.GetImageAsTexture("Stack_8_med.png", typeof(StackAbilityIcons).Assembly),
         TextureHelper.GetImageAsTexture("Stack_9_med.png", typeof(StackAbilityIcons).Assembly)
     };
+    
     private static readonly Sprite[] GBC_NUMBER_SPRITES = new Sprite[]
     {
         GetGBCNumberSprite(1),
@@ -54,7 +59,7 @@ public static class StackAbilityIcons
     private static Sprite GetGBCNumberSprite(int number)
     {
         string stackGBC = "stack_gbc.png";
-        if (!PatchPlugin.act2StackIconType.Value)
+        if (!PatchPlugin.configAct2StackIconNumberStyle.Value)
             stackGBC = "stack_gbc_alt.png";
 
         Texture2D texture = TextureHelper.GetImageAsTexture(stackGBC, typeof(StackAbilityIcons).Assembly);
@@ -297,7 +302,7 @@ public static class StackAbilityIcons
     {
         int preDistinctCount = __result.Count;
         __result = __result.Distinct().ToList();
-        if (PatchPlugin.doubleStackSplit.Value && __result.Count == 1 && preDistinctCount == 2 && AbilitiesUtil.GetInfo(__result[0]).canStack)
+        if (PatchPlugin.configDisplayStackableSigilsSeparately.Value && __result.Count == 1 && preDistinctCount == 2 && AbilitiesUtil.GetInfo(__result[0]).canStack)
         {
             __result.Add(__result[0]);
         }
@@ -340,7 +345,7 @@ public static class StackAbilityIcons
 
         if (count > 1) // we have a stack and need to add an override
         {
-            if (PatchPlugin.doubleStackSplit.Value && count == 2 && count == baseAbilities.Count)
+            if (PatchPlugin.configDisplayStackableSigilsSeparately.Value && count == 2 && count == baseAbilities.Count)
                 __instance.SetIcon(__instance.LoadIcon(info, ai, card != null && card.OpponentCard));
             else
                 __instance.SetIcon(PatchTexture(ability, (int)count));
@@ -374,7 +379,7 @@ public static class StackAbilityIcons
         if (grps.Count > 0 && grps.Count - 1 < abilityIconGroups.Count) // if there are displayable sigils and there are enough icon groups
         {
             // if there is only 1 ability and there are two stacks of it, render it twice
-            if (PatchPlugin.doubleStackSplit.Value && grps.Count == 1 && grps[0].Item2 == 2/* && AbilitiesUtil.GetInfo(grps[0].Item1).canStack*/)
+            if (PatchPlugin.configDisplayStackableSigilsSeparately.Value && grps.Count == 1 && grps[0].Item2 == 2/* && AbilitiesUtil.GetInfo(grps[0].Item1).canStack*/)
             {
                 //PatchPlugin.Logger.LogDebug($"Displaying {grps[0].Item1} twice");
                 grps[0] = new Tuple<Ability, int>(grps[0].Item1, 1);

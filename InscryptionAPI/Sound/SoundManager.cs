@@ -10,6 +10,27 @@ namespace InscryptionAPI.Sound;
 /// </summary>
 public static class SoundManager
 {
+    /// <summary>
+    /// Maps file name extensions to their associated <see cref="AudioType"/>.
+    /// <list type="table">
+    ///     <item>
+    ///         <term>.mp3</term>
+    ///         <description>MPEG</description>
+    ///     </item><item>
+    ///         <term>.wav</term>
+    ///         <description>WAV</description>
+    ///     </item><item>
+    ///         <term>.ogg</term>
+    ///         <description>OGGVORBIS</description>
+    ///     </item><item>
+    ///         <term>.aiff</term>
+    ///         <description>AIFF</description>
+    ///     </item><item>
+    ///         <term>.aif</term>
+    ///         <description>AIFF</description>
+    ///     </item>
+    ///     </list>
+    /// </summary>
     public static Dictionary<string, AudioType> AudioTypes = new Dictionary<string, AudioType>()
     {
         { ".mp3", AudioType.MPEG },
@@ -39,10 +60,10 @@ public static class SoundManager
         InscryptionAPIPlugin.Logger.LogError($"SoundManager: {message}");
 
     /// <summary>
-    /// A helper method for converting an audio file into an Unity <c>AudioClip</c>.
+    /// A helper method for converting an audio file into an Unity <see cref="AudioClip"/>.
     /// </summary>
     /// <param name="path">The path to your audio file.</param>
-    /// <returns>The audio file converted into an <c>AudioClip</c> object.</returns>
+    /// <returns>The audio file converted into an <see cref="AudioClip"/> object.</returns>
     public static AudioClip LoadAudioClip(string path)
     {
         return LoadAudioClip(string.Empty, path);
@@ -55,11 +76,11 @@ public static class SoundManager
     }
 
     /// <summary>
-    /// A helper method for converting an audio file into an Unity <c>AudioClip</c>.
+    /// A helper method for converting an audio file into an Unity <see cref="AudioClip"/>.
     /// </summary>
     /// <param name="guid">Your plugin's GUID.</param>
     /// <param name="path">The path to your audio file.</param>
-    /// <returns>The audio file converted into an <c>AudioClip</c> object.</returns>
+    /// <returns>The audio file converted into an <see cref="AudioClip"/> object.</returns>
     public static AudioClip LoadAudioClip(string guid, string path)
     {
         if (!Path.IsPathRooted(path))

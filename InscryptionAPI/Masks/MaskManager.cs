@@ -6,29 +6,77 @@ using UnityEngine;
 
 namespace InscryptionAPI.Masks;
 
+/// <summary>
+/// Manager class for managing custom masks added through the API.
+/// </summary>
 public static class MaskManager
 {
-    public enum ModelType
-    {
+    /// <summary>
+    /// IDs of all mask models.
+    /// </summary>
+    public enum ModelType {
+        /// <summary>
+        /// Mask worn during the Prospector fight.
+        /// </summary>
         Prospector = 1,
+        /// <summary>
+        /// Mask worn during the Woodcarver node.
+        /// </summary>
         Woodcarver = 2,
+        /// <summary>
+        /// Mask worn during the Angler fight.
+        /// </summary>
         Angler = 3,
+        /// <summary>
+        /// Mask worn during the Trapper node and first phase of the Trapper-Trader fight.
+        /// </summary>
         Trapper = 4,
+        /// <summary>
+        /// Mask worn during the Trader node and the second phase of the Trapper-Trader fight.
+        /// </summary>
         Trader = 5,
+        /// <summary>
+        /// Mask worn during the Mycologist node.
+        /// </summary>
         Doctor = 6,
 
+        /// <summary>
+        /// API-added mask representing a flat nondescript face.
+        /// </summary>
         FlatMask = 101,
+        /// <summary>
+        /// API-added mask representing a nondescript sphere.
+        /// </summary>
         Sphere = 102,
     }
 
+    /// <summary>
+    /// <see cref="LeshyAnimationController.Mask"/> ID for when Leshy should have no mask.
+    /// </summary>
     public static LeshyAnimationController.Mask NoMask = (LeshyAnimationController.Mask)(-1);
 
     private static Dictionary<LeshyAnimationController.Mask, List<CustomMask>> MaskLookup = new();
+    /// <summary>
+    /// Dictionary that maps new mask model IDs to their prefab <see cref="ResourceLookup"/> object.
+    /// </summary>
     public static Dictionary<ModelType, ResourceLookup> TypeToPrefabLookup = new();
 
+    /// <summary>
+    /// All processed vanilla masks.
+    /// </summary>
     public static List<CustomMask> BaseMasks = GenerateBaseMasks();
+    /// <summary>
+    /// All processed mod-added masks.
+    /// </summary>
     public static List<CustomMask> CustomMasks = new List<CustomMask>();
 
+    /// <summary>
+    /// Registers a new mask prefab with the API for use when creating custom masks.
+    /// </summary>
+    /// <param name="pluginGUID">The GUID of the mod adding the mask prefab.</param>
+    /// <param name="prefabName">The internal name of the mask prefab.</param>
+    /// <param name="resource">The <see cref="ResourceLookup"/> object containing the data needed to find and load the mask prefab.</param>
+    /// <returns>The ID of the newly registered prefab for use when creating masks.</returns>
     public static ModelType RegisterPrefab(string pluginGUID, string prefabName, ResourceLookup resource)
     {
         ModelType type = GuidManager.GetEnumValue<ModelType>(pluginGUID, prefabName);
@@ -37,6 +85,13 @@ public static class MaskManager
         return type;
     }
 
+    /// <summary>
+    /// Creates a simple flat mask with a texture on its front and adds it to the API.
+    /// </summary>
+    /// <param name="guid">The GUID of the mod adding this mask.</param>
+    /// <param name="name">The internal name of this mask.</param>
+    /// <param name="texturePath">The file path of the texture to display on front of this mask.</param>
+    /// <returns>The <see cref="CustomMask"/> object containing all the data of this mask.</returns>
     public static CustomMask Add(string guid, string name, string texturePath = null)
     {
         LeshyAnimationController.Mask maskType = GuidManager.GetEnumValue<LeshyAnimationController.Mask>(guid, name);
@@ -52,6 +107,14 @@ public static class MaskManager
         return mask;
     }
 
+    /// <summary>
+    /// Creates a simple flat mask with a texture on its front and adds it to the API as a random option that can appear when selecting masks with the same ID.
+    /// </summary>
+    /// <param name="guid">The GUID of the mod adding this mask.</param>
+    /// <param name="name">The internal name of this mask.</param>
+    /// <param name="maskType">The ID of this mask. This mask will be added to the pool of masks with this same ID and may be randomly selected.</param>
+    /// <param name="texturePath">The file path of the texture to display on front of this mask.</param>
+    /// <returns>The <see cref="CustomMask"/> object containing all the data of this mask.</returns>
     public static CustomMask AddRandom(string guid, string name, LeshyAnimationController.Mask maskType, string texturePath = null)
     {
         CustomMask mask = AddCustomMask(guid, name, maskType, ModelType.FlatMask, false);
@@ -65,6 +128,16 @@ public static class MaskManager
         return mask;
     }
 
+    /// <summary>
+    /// Adds a simple mask that overrides masks with the given ID.
+    /// <br/>
+    /// The mask will use the <see cref="ModelType.FlatMask"/> model type, which will display the given texture on its front.
+    /// </summary>
+    /// <param name="guid">The GUID of the mod adding this mask.</param>
+    /// <param name="name">The internal name of this mask.</param>
+    /// <param name="maskType">The ID of masks to override with this mask.</param>
+    /// <param name="texturePath">The file path of the texture to display on front of this mask.</param>
+    /// <returns>The <see cref="CustomMask"/> object containing all the data of this mask.</returns>
     public static CustomMask Override(string guid, string name, LeshyAnimationController.Mask maskType, string texturePath = null)
     {
         CustomMask mask = AddCustomMask(guid, name, maskType, ModelType.FlatMask, true);
@@ -83,7 +156,7 @@ public static class MaskManager
     /// </summary>
     /// <param name="guid">GUID of your mod.</param>
     /// <param name="name">Name of the mask.</param>
-    /// <param name="maskType">The mask we want to add so we cna tell leshy to put on that specific mask.</param>
+    /// <param name="maskType">The mask we want to add so we can tell leshy to put on that specific mask.</param>
     /// <param name="modelType">The model the mask will use.</param>
     /// <param name="isOverride">.</param>
     /// <returns>.</returns>

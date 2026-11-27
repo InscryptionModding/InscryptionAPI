@@ -4,8 +4,14 @@ using InscryptionAPI.Helpers;
 
 namespace InscryptionCommunityPatch.Card;
 
+/// <summary>
+/// Patches in our custom Icons for Sigils, and Cards that are missing Icons.
+/// </summary>
 internal static class CommunityArtPatches
 {
+    /// <summary>
+    /// The 3D Act Icons to Patch in.
+    /// </summary>
     internal static readonly List<Ability> regularIconsToPatch = new()
     {
         Ability.ActivatedDealDamage,
@@ -29,6 +35,9 @@ internal static class CommunityArtPatches
         Ability.SquirrelStrafe
     };
 
+    /// <summary>
+    /// The 2D Act Art Icons to Patch in.
+    /// </summary>
     internal static readonly List<Ability> gbcIconsToPatch = new()
     {
         Ability.ConduitSpawnGems,
@@ -62,6 +71,10 @@ internal static class CommunityArtPatches
         Ability.SquirrelOrbit,
         Ability.DrawVesselOnHit
     };
+    
+    /// <summary>
+    /// The 3D Act Card's to Patch the Artwork of.
+    /// </summary>
     internal static readonly List<string> regularCardsToPatch = new()
     {
         "Ant",
@@ -83,6 +96,9 @@ internal static class CommunityArtPatches
         "Tail_Insect",
     };
 
+    /// <summary>
+    /// Handles Patching in the Community Patches artwork.
+    /// </summary>
     internal static void PatchCommunityArt()
     {
         System.Reflection.Assembly ass = typeof(CommunityArtPatches).Assembly;
@@ -95,7 +111,7 @@ internal static class CommunityArtPatches
         foreach (string name in regularCardsToPatch)
             CardManager.BaseGameCards.CardByName(name).SetPixelPortrait(TextureHelper.GetImageAsTexture($"{name}_pixel.png", ass));
 
-        if (PatchPlugin.undeadCatEmission.Value)
+        if (PatchPlugin.configEnforceUndeadCatToHaveARedEmission.Value)
         {
             CardManager.BaseGameCards.CardByName("CatUndead")
             .SetEmissivePortrait(TextureHelper.GetImageAsTexture("CatUndead_emission.png", ass))

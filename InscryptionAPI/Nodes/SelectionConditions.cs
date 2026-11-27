@@ -18,6 +18,14 @@ public class Not : NodeData.SelectionCondition
         condition = selectionCondition;
     }
 
+    /// <summary>
+    /// Determines if this condition is satisfied and this node can be generated.
+    /// <br/><br/>
+    /// If <see cref="condition"/> is not satisfied, this returns true.
+    /// </summary>
+    /// <param name="gridY">The y-index of this node. Higher values represent further nodes on the map.</param>
+    /// <param name="previousNodes">The nodes generated at the previous y-index.</param>
+    /// <returns>True if this node condition is satisfied and the node can be generated and added to the map.</returns>
     public override bool Satisfied(int gridY, List<NodeData> previousNodes)
     {
         return !condition.Satisfied(gridY, previousNodes);
@@ -43,6 +51,14 @@ public class And : NodeData.SelectionCondition
         condition2 = selectionCondition2;
     }
 
+    /// <summary>
+    /// Determines if this condition is satisfied and this node can be generated.
+    /// <br/><br/>
+    /// If <see cref="condition1"/> and <see cref="condition2"/> are both true, this also returns true.
+    /// </summary>
+    /// <param name="gridY">The y-index of this node. Higher values represent further nodes on the map.</param>
+    /// <param name="previousNodes">The nodes generated at the previous y-index.</param>
+    /// <returns>True if this node condition is satisfied and the node can be generated and added to the map.</returns>
     public override bool Satisfied(int gridY, List<NodeData> previousNodes)
     {
         return condition1.Satisfied(gridY, previousNodes) && condition2.Satisfied(gridY, previousNodes);
@@ -54,6 +70,14 @@ public class And : NodeData.SelectionCondition
 /// </summary>
 public class True : NodeData.SelectionCondition
 {
+    /// <summary>
+    /// Determines if this condition is satisfied and this node can be generated.
+    /// <br/><br/>
+    /// Always returns true.
+    /// </summary>
+    /// <param name="gridY">The y-index of this node. Higher values represent further nodes on the map.</param>
+    /// <param name="previousNodes">The nodes generated at the previous y-index.</param>
+    /// <returns>True if this node condition is satisfied and the node can be generated and added to the map.</returns>
     public override bool Satisfied(int gridY, List<NodeData> previousNodes)
     {
         return true;
@@ -65,6 +89,14 @@ public class True : NodeData.SelectionCondition
 /// </summary>
 public class False : NodeData.SelectionCondition
 {
+    /// <summary>
+    /// Determines if this condition is satisfied and this node can be generated.
+    /// <br/><br/>
+    /// Always returns false.
+    /// </summary>
+    /// <param name="gridY">The y-index of this node. Higher values represent further nodes on the map.</param>
+    /// <param name="previousNodes">The nodes generated at the previous y-index.</param>
+    /// <returns>True if this node condition is satisfied and the node can be generated and added to the map.</returns>
     public override bool Satisfied(int gridY, List<NodeData> previousNodes)
     {
         return false;
@@ -93,6 +125,17 @@ public class CustomPreviousNodesContent : NodeData.SelectionCondition
         this.doesContain = doesContain;
     }
 
+
+    /// <summary>
+    /// Determines if this condition is satisfied and this node can be generated.
+    /// <br/><br/>
+    /// If <see cref="doesContain"/> is true, return true if the previous nodes contain a node with the given <see cref="name"/> and <see cref="guid"/>.
+    /// <br/><br/>
+    /// If <see cref="doesContain"/> is false, return true if the previous nodes do not contain a node with the given <see cref="name"/> and <see cref="guid"/>.
+    /// </summary>
+    /// <param name="gridY">The y-index of this node. Higher values represent further nodes on the map.</param>
+    /// <param name="previousNodes">The nodes generated at the previous y-index.</param>
+    /// <returns>True if this node condition is satisfied and the node can be generated and added to the map.</returns>
     public override bool Satisfied(int gridY, List<NodeData> previousNodes)
     {
         return previousNodes.Exists((x) => x != null && x is CustomSpecialNodeData && (x as CustomSpecialNodeData).name == name && (x as CustomSpecialNodeData).guid == guid) == doesContain;
@@ -109,7 +152,7 @@ public class CustomPreviousRowContent : NodeData.SelectionCondition
     private bool doesContain;
 
     /// <summary>
-    /// Creates an "CustomPreviousRowContent" selection condition and sets its target guid, name and required value.
+    /// Creates a <see cref="CustomPreviousRowContent"/> selection condition and sets its target guid, name and required value.
     /// </summary>
     /// <param name="guid">The mod guid of the node this selection condition will be looking for.</param>
     /// <param name="name">The name of the node this selection condition will be looking for.</param>
@@ -122,6 +165,16 @@ public class CustomPreviousRowContent : NodeData.SelectionCondition
         this.doesContain = doesContain;
     }
 
+    /// <summary>
+    /// Determines if this condition is satisfied and this node can be generated.
+    /// <br/><br/>
+    /// If <see cref="doesContain"/> is true, return true if the previous node row contains a node with the given <see cref="name"/> and <see cref="guid"/>.
+    /// <br/><br/>
+    /// If <see cref="doesContain"/> is false, return true if the previous node row does not contain a node with the given <see cref="name"/> and <c>guide</c>.
+    /// </summary>
+    /// <param name="gridY">The y-index of this node. Higher values represent further nodes on the map.</param>
+    /// <param name="previousNodes">The nodes generated at the previous y-index.</param>
+    /// <returns>True if this node condition is satisfied and the node can be generated and added to the map.</returns>
     public override bool Satisfied(int gridY, List<NodeData> previousNodes)
     {
         return previousNodes.Exists((x) => x != null && x.gridY == gridY - 1 && x is CustomSpecialNodeData && (x as CustomSpecialNodeData).name == name && (x as CustomSpecialNodeData).guid == guid) == doesContain;
@@ -144,6 +197,14 @@ public class Func : NodeData.SelectionCondition
         func = del;
     }
 
+    /// <summary>
+    /// Determines if this condition is satisfied and this node can be generated.
+    /// <br/><br/>
+    /// If <see cref="func"/> is null, return true. Otherwise, call <see cref="func"/> and return its value.
+    /// </summary>
+    /// <param name="gridY">The y-index of this node. Higher values represent further nodes on the map.</param>
+    /// <param name="previousNodes">The nodes generated at the previous y-index.</param>
+    /// <returns>True if this node condition is satisfied and the node can be generated and added to the map.</returns>
     public override bool Satisfied(int gridY, List<NodeData> previousNodes)
     {
         if (func == null)
