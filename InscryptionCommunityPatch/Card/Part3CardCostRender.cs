@@ -106,6 +106,14 @@ public static class Part3CardCostRender
         }
     }
 
+    private static List<GemType> BlueGemsCost(this CardInfo card) => card.GemsCost.Where(g => g == GemType.Blue).ToList();
+    private static List<GemType> GreenGemsCost(this CardInfo card) => card.GemsCost.Where(g => g == GemType.Green).ToList();
+    private static List<GemType> OrangeGemsCost(this CardInfo card) => card.GemsCost.Where(g => g == GemType.Orange).ToList();
+
+    private static List<GemType> BlueGemsCost(this PlayableCard card) => card.GemsCost().Where(g => g == GemType.Blue).ToList();
+    private static List<GemType> GreenGemsCost(this PlayableCard card) => card.GemsCost().Where(g => g == GemType.Green).ToList();
+    private static List<GemType> OrangeGemsCost(this PlayableCard card) => card.GemsCost().Where(g => g == GemType.Orange).ToList();
+
     /// <summary>
     /// Hook into this event to be able to add a new custom cost to a card. In your delegate, create a new CustomCostRenderInfo object with the appropriate textures (or no textures if you will use the UpdateCardCostComplex event as well).
     /// </summary>
@@ -147,7 +155,8 @@ public static class Part3CardCostRender
     /// <remarks>The Part3CardCostRender class contains a number of constants that point to important parts of the card.</remarks>
     public static GameObject GetPiece(this DiskCardGame.Card card, string key)
     {
-        return card.gameObject.transform.Find(key)?.gameObject;
+        Transform t = card.gameObject.transform.Find(key);
+        return t?.gameObject;
     }
 
     private static GameObject GetDiskCostPiece(DiskCardGame.Card card, string key)
@@ -441,6 +450,26 @@ public static class Part3CardCostRender
         return registeredGems?.Any(entry => entry?.Item3 != null
             && (entry.Item3.transform == child || entry.Item3.transform.IsChildOf(child))
             && (ownedClones == null || !ownedClones.Any(gem => ReferenceEquals(gem.Renderer, entry.Item3)))) == true;
+    }
+
+    private static GameObject MakeCostContainer(DiskCardGame.Card card, string path, Color lightColor)
+    {
+        GameObject container = GameObject.CreatePrimitive(PrimitiveType.Quad);
+        container.name = path.Split('/').Last();
+        container.transform.SetParent(card.GetPiece(UPPER_GEM_CONTAINER).transform);
+
+        GameObject.Destroy(container.GetComponent<MeshCollider>());
+
+        Renderer renderer = container.GetComponent<Renderer>();
+        renderer.material.EnableKeyword("_EMISSION");
+        renderer.material.SetTexture("_MainTex", BackgroundTexture);
+        renderer.material.SetTexture("_EmissionMap", BackgroundTexture);
+
+        container.transform.localPosition = new(.25f, .0565f, 0f);
+        container.transform.localScale = new(0.43f, 0.12f, 0.08f);
+        container.transform.localEulerAngles = new(90f, 245f, 65f);
+
+        return container;
     }
 
     private static readonly Dictionary<string, Dictionary<int, Texture2D>> TextureCache = new();
@@ -789,11 +818,11 @@ public static class Part3CardCostRender
             }
             else
             {
-                if (CountGemCost(__instance, GemType.Orange) > 0)
+                if ((playableCard?.OrangeGemsCost() ?? __instance.Info.OrangeGemsCost()).Count > 0)
                     costDisplays.Add(new("Gems_Orange"));
-                if (CountGemCost(__instance, GemType.Blue) > 0)
+                if ((playableCard?.BlueGemsCost() ?? __instance.Info.BlueGemsCost()).Count > 0)
                     costDisplays.Add(new("Gems_Blue"));
-                if (CountGemCost(__instance, GemType.Green) > 0)
+                if ((playableCard?.GreenGemsCost() ?? __instance.Info.GreenGemsCost()).Count > 0)
                     costDisplays.Add(new("Gems_Green"));
             }
         }
@@ -806,6 +835,8 @@ public static class Part3CardCostRender
         if (bloodCost > 0)
             costDisplays.Add(new("Blood", GetIconifiedCostTexture(BloodCostIcon, BloodCostIconUnlit, bloodCost)));
 
+        // get a list of the custom costs we need textures for
+        // check for PlayableCard to account for possible dynamic costs (no API support but who knows what modders do)
         List<CardCostManager.FullCardCost> customCosts;
         if (playableCard != null)
             customCosts = playableCard.GetCustomCardCosts().Select(x => CardCostManager.AllCustomCosts.Find(c => c.CostName == x.CostName)).ToList();
@@ -892,19 +923,24 @@ public static class Part3CardCostRender
         // Run the complex update
         UpdateCardCostComplex?.Invoke(__instance.Info, costDisplays);
 
-        if (gemsCost.Count > 0 && gemsCost.Count <= 3)
+        // Handle our special case (the gems)
+        if (gemsCost.Count > 0)
         {
-            DisplayGemCosts(__instance, costDisplays, "Gems_All");
+            if (gemsCost.Count <= 3)
+            {
+                DisplayGemCosts(__instance, costDisplays, "Gems_All");
+            }
+            else
+            {
+                int orangeGemsCost = (playableCard?.OrangeGemsCost() ?? __instance.Info.OrangeGemsCost()).Count;
+                int blueGemsCost = (playableCard?.BlueGemsCost() ?? __instance.Info.BlueGemsCost()).Count;
+                int greenGemsCost = (playableCard?.GreenGemsCost() ?? __instance.Info.GreenGemsCost()).Count;
+                DisplayGemCosts(__instance, costDisplays, "Gems_Orange", GemType.Orange, orangeGemsCost);
+                DisplayGemCosts(__instance, costDisplays, "Gems_Blue", GemType.Blue, blueGemsCost);
+                DisplayGemCosts(__instance, costDisplays, "Gems_Green", GemType.Green, greenGemsCost);
+            }
         }
-        else if (gemsCost.Count > 3)
-        {
-            int orangeGemsCost = CountGemCost(__instance, GemType.Orange);
-            int blueGemsCost = CountGemCost(__instance, GemType.Blue);
-            int greenGemsCost = CountGemCost(__instance, GemType.Green);
-            DisplayGemCosts(__instance, costDisplays, "Gems_Orange", GemType.Orange, orangeGemsCost);
-            DisplayGemCosts(__instance, costDisplays, "Gems_Blue", GemType.Blue, blueGemsCost);
-            DisplayGemCosts(__instance, costDisplays, "Gems_Green", GemType.Green, greenGemsCost);
-        }
+
         // Handle the energy bars
         bool energyLightsActive = energyCost > 0 || costDisplays.Count == 0;
         if (energyLights != null)
@@ -912,32 +948,30 @@ public static class Part3CardCostRender
         ResetBlueGemifyGem(__instance, true, __instance.Info.Gemified && energyLightsActive);
     }
 
-    private static int CountGemCost(DiskCardGame.Card card, GemType color) =>
-        ((card as PlayableCard)?.GemsCost() ?? card.Info.GemsCost).Count(gem => gem == color);
-
-    private static void DisplayGemCosts(DiskCardGame.Card card, List<CustomCostRenderInfo> costs, string id, GemType? gemType = null, int count = 3)
+    private static void DisplayGemCosts(DiskCardGame.Card card, List<CustomCostRenderInfo> costDisplays, string id, GemType? gemType = null, int count = 3)
     {
         if (count == 0)
             return;
 
-        CustomCostRenderInfo cost = costs.FirstOrDefault(item => string.Equals(item.CostId, id, StringComparison.OrdinalIgnoreCase));
-        if (cost?.CostContainer == null)
+        CustomCostRenderInfo gemRenderInfo = costDisplays.FirstOrDefault(item => string.Equals(item.CostId, id, StringComparison.InvariantCultureIgnoreCase));
+        if (gemRenderInfo?.CostContainer == null)
             return;
 
         float stretchFactor = count / 3f;
         if (stretchFactor > 1f)
-            cost.Stretch(stretchFactor);
+            gemRenderInfo.Stretch(stretchFactor);
 
-        card.GetGemCostContainer(force: true, container: cost.CostContainer, gemType: gemType, stretchFactor: stretchFactor);
+        card.GetGemCostContainer(force: true, container: gemRenderInfo.CostContainer, gemType: gemType, stretchFactor: stretchFactor);
         if (OwnedGemClones.TryGetValue(card.StatsLayer, out var clones))
         {
             foreach (var (type, clone, _) in clones.ToArray())
             {
-                if (clone != null && clone.transform.parent == cost.CostContainer.transform && (!gemType.HasValue || type == gemType.Value))
+                if (clone != null && clone.transform.parent == gemRenderInfo.CostContainer.transform && (!gemType.HasValue || type == gemType.Value))
                     clone.SetActive(true);
             }
         }
     }
+
     [HarmonyPatch(typeof(DiskRenderStatsLayer), nameof(DiskRenderStatsLayer.ManagedUpdate))]
     [HarmonyPostfix]
     private static void UpdateGemsCost(DiskRenderStatsLayer __instance)

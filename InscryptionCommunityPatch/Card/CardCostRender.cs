@@ -46,11 +46,11 @@ public static class CardCostRender
         if (cardInfo == null)
             throw new ArgumentNullException(nameof(cardInfo));
 
-        int blood = playableCard?.BloodCost() ?? cardInfo.BloodCost;
-        int bones = playableCard?.BonesCost() ?? cardInfo.BonesCost;
-        int energy = playableCard?.EnergyCost ?? cardInfo.EnergyCost;
-        List<GemType> gems = playableCard?.GemsCost() ?? cardInfo.GemsCost;
-        return new CardCostDisplayInfo(blood, bones, energy, gems, ReadCustomCosts(cardInfo, playableCard));
+        int bloodCost = playableCard?.BloodCost() ?? cardInfo.BloodCost;
+        int bonesCost = playableCard?.BonesCost() ?? cardInfo.BonesCost;
+        int energyCost = playableCard?.EnergyCost ?? cardInfo.EnergyCost;
+        List<GemType> gemsCost = playableCard?.GemsCost() ?? cardInfo.GemsCost;
+        return new CardCostDisplayInfo(bloodCost, bonesCost, energyCost, gemsCost, ReadCustomCosts(cardInfo, playableCard));
     }
 
     private static IReadOnlyList<(CardCostManager.FullCardCost Definition, int Amount)> ReadCustomCosts(CardInfo cardInfo, PlayableCard playableCard)

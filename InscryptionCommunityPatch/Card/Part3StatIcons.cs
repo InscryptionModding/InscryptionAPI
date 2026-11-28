@@ -21,7 +21,7 @@ internal static class Part3StatIcons
 
     [HarmonyPatch(typeof(DiskCardGame.Card), "RenderCard")]
     [HarmonyPrefix]
-    private static void UpdateBoundCardStatIcons(DiskCardGame.Card __instance)
+    private static void UpdateLiveRenderedCard(DiskCardGame.Card __instance)
     {
         if (__instance.StatsLayer is not DiskRenderStatsLayer)
             return;

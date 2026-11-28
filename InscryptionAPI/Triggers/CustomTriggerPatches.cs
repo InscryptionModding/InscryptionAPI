@@ -97,23 +97,23 @@ internal static class CustomTriggerPatches
     [HarmonyPostfix, HarmonyPatch(typeof(BoardManager), nameof(BoardManager.AssignCardToSlot))]
     private static IEnumerator TriggerOnOtherCardAssignedToSlotInHand(IEnumerator result, PlayableCard card, CardSlot slot, bool resolveTriggers)
     {
-        CardSlot previousSlot = card.Slot;
+        CardSlot slot2 = card.Slot;
         yield return result;
         // Vanilla triggers can move or remove the card before this coroutine resumes.
-        if (!resolveTriggers || previousSlot == slot || !IsCurrentAssignment(card, slot))
+        if (!resolveTriggers || slot2 == slot || !IsCurrentAssignment(card, slot))
             yield break;
 
         // A receiver may move the card before the next receiver is evaluated.
         yield return CustomTriggerFinder.TriggerAll<IOnCardAssignedToSlotContext>(false,
-            x => IsCurrentAssignment(card, slot) && x.RespondsToCardAssignedToSlotContext(card, previousSlot, slot) && IsCurrentAssignment(card, slot),
-            x => x.OnCardAssignedToSlotContext(card, previousSlot, slot));
+            x => IsCurrentAssignment(card, slot) && x.RespondsToCardAssignedToSlotContext(card, slot2, slot) && IsCurrentAssignment(card, slot),
+            x => x.OnCardAssignedToSlotContext(card, slot2, slot));
         if (!IsCurrentAssignment(card, slot))
             yield break;
 
         yield return CustomTriggerFinder.TriggerInHand<IOnOtherCardAssignedToSlotInHand>(
             x => IsCurrentAssignment(card, slot) && x.RespondsToOtherCardAssignedToSlotInHand(card) && IsCurrentAssignment(card, slot),
             x => x.OnOtherCardAssignedToSlotInHand(card));
-        if (previousSlot != null && IsCurrentAssignment(card, slot))
+        if (slot2 != null && IsCurrentAssignment(card, slot))
             yield return CustomTriggerFinder.TriggerAll<IOnCardAssignedToSlotNoResolve>(false,
                 x => IsCurrentAssignment(card, slot) && x.RespondsToCardAssignedToSlotNoResolve(card) && IsCurrentAssignment(card, slot),
                 x => x.OnCardAssignedToSlotNoResolve(card));
